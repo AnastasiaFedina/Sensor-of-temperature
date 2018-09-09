@@ -1,0 +1,1831 @@
+
+rozr_v19_slave1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000bec  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000020  00800060  00000bec  00000c80  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000e  00800080  00800080  00000ca0  2**0
+                  ALLOC
+  3 .stab         000008d0  00000000  00000000  00000ca0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000183  00000000  00000000  00001570  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000020  00000000  00000000  000016f3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 000001c3  00000000  00000000  00001713  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000c87  00000000  00000000  000018d6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000299  00000000  00000000  0000255d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000997  00000000  00000000  000027f6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000160  00000000  00000000  00003190  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    000002d1  00000000  00000000  000032f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000003df  00000000  00000000  000035c1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_pubtypes 00000044  00000000  00000000  000039a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 4b 03 	jmp	0x696	; 0x696 <__vector_10>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 c8 02 	jmp	0x590	; 0x590 <__vector_13>
+  38:	0c 94 0e 03 	jmp	0x61c	; 0x61c <__vector_14>
+  3c:	0c 94 36 03 	jmp	0x66c	; 0x66c <__vector_15>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ec ee       	ldi	r30, 0xEC	; 236
+  68:	fb e0       	ldi	r31, 0x0B	; 11
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 38       	cpi	r26, 0x80	; 128
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a0 e8       	ldi	r26, 0x80	; 128
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ae 38       	cpi	r26, 0x8E	; 142
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 37 05 	call	0xa6e	; 0xa6e <main>
+  8a:	0c 94 f4 05 	jmp	0xbe8	; 0xbe8 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <WriteBufOUT>:
+	}
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void WriteBufOUT(unsigned char value) // Записування значення в буфер
+{	
+	if (write != 1) // якщо не передаються данні
+  92:	90 91 84 00 	lds	r25, 0x0084
+  96:	91 30       	cpi	r25, 0x01	; 1
+  98:	61 f0       	breq	.+24     	; 0xb2 <WriteBufOUT+0x20>
+	{
+    	BufferOUT[EndBufOUT++] = value;
+  9a:	90 91 82 00 	lds	r25, 0x0082
+  9e:	e9 2f       	mov	r30, r25
+  a0:	f0 e0       	ldi	r31, 0x00	; 0
+  a2:	e6 57       	subi	r30, 0x76	; 118
+  a4:	ff 4f       	sbci	r31, 0xFF	; 255
+  a6:	80 83       	st	Z, r24
+  a8:	89 2f       	mov	r24, r25
+  aa:	8f 5f       	subi	r24, 0xFF	; 255
+       	EndBufOUT &= BUF_MASK;
+  ac:	83 70       	andi	r24, 0x03	; 3
+  ae:	80 93 82 00 	sts	0x0082, r24
+  b2:	08 95       	ret
+
+000000b4 <Data>:
+//---------------------------------------------------------------------------------------------
+//                  Відправляємо данні на LCD
+void Data(unsigned char c, unsigned char rs)
+{
+	if(rs==0) LCDcontrolPORT&=~(1<<RS); else LCDcontrolPORT|=(1<<RS);
+  b4:	66 23       	and	r22, r22
+  b6:	11 f4       	brne	.+4      	; 0xbc <Data+0x8>
+  b8:	c0 98       	cbi	0x18, 0	; 24
+  ba:	01 c0       	rjmp	.+2      	; 0xbe <Data+0xa>
+  bc:	c0 9a       	sbi	0x18, 0	; 24
+	LCDcontrolPORT|=(1<<E);
+  be:	c2 9a       	sbi	0x18, 2	; 24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  c0:	ef ef       	ldi	r30, 0xFF	; 255
+  c2:	f8 e0       	ldi	r31, 0x08	; 8
+  c4:	31 97       	sbiw	r30, 0x01	; 1
+  c6:	f1 f7       	brne	.-4      	; 0xc4 <Data+0x10>
+  c8:	00 c0       	rjmp	.+0      	; 0xca <Data+0x16>
+  ca:	00 00       	nop
+	_delay_ms(1);
+	LCDdataPORT=0x00;
+  cc:	1b ba       	out	0x1b, r1	; 27
+	LCDdataPORT=c;
+  ce:	8b bb       	out	0x1b, r24	; 27
+	LCDcontrolPORT&=~(1<<E);
+  d0:	c2 98       	cbi	0x18, 2	; 24
+  d2:	8f ef       	ldi	r24, 0xFF	; 255
+  d4:	98 e0       	ldi	r25, 0x08	; 8
+  d6:	01 97       	sbiw	r24, 0x01	; 1
+  d8:	f1 f7       	brne	.-4      	; 0xd6 <Data+0x22>
+  da:	00 c0       	rjmp	.+0      	; 0xdc <Data+0x28>
+  dc:	00 00       	nop
+	_delay_ms(1);
+}
+  de:	08 95       	ret
+
+000000e0 <Set_Char>:
+//---------------------------------------------------------------------------------------------
+//                    Виводимо один символ
+void Set_Char(unsigned char c)
+{
+	Data(c, 1);
+  e0:	61 e0       	ldi	r22, 0x01	; 1
+  e2:	0e 94 5a 00 	call	0xb4	; 0xb4 <Data>
+}
+  e6:	08 95       	ret
+
+000000e8 <Set_String>:
+
+//---------------------------------------------------------------------------------------------
+//                     Виводимо строку символів
+void Set_String(char str[])
+{
+  e8:	1f 93       	push	r17
+  ea:	cf 93       	push	r28
+  ec:	df 93       	push	r29
+  ee:	ec 01       	movw	r28, r24
+	for(unsigned char i=0; str[i]!='\0'; i++)
+  f0:	10 e0       	ldi	r17, 0x00	; 0
+  f2:	03 c0       	rjmp	.+6      	; 0xfa <Set_String+0x12>
+	{
+		Set_Char(str[i]);
+  f4:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+
+//---------------------------------------------------------------------------------------------
+//                     Виводимо строку символів
+void Set_String(char str[])
+{
+	for(unsigned char i=0; str[i]!='\0'; i++)
+  f8:	1f 5f       	subi	r17, 0xFF	; 255
+  fa:	fe 01       	movw	r30, r28
+  fc:	e1 0f       	add	r30, r17
+  fe:	f1 1d       	adc	r31, r1
+ 100:	80 81       	ld	r24, Z
+ 102:	88 23       	and	r24, r24
+ 104:	b9 f7       	brne	.-18     	; 0xf4 <Set_String+0xc>
+	{
+		Set_Char(str[i]);
+	}
+}
+ 106:	df 91       	pop	r29
+ 108:	cf 91       	pop	r28
+ 10a:	1f 91       	pop	r17
+ 10c:	08 95       	ret
+
+0000010e <Set_Number>:
+//---------------------------------------------------------------------------------------------
+//                     Виводимо двоцифрове число
+void Set_Number(unsigned char c)
+{
+ 10e:	1f 93       	push	r17
+ 110:	18 2f       	mov	r17, r24
+	unsigned char l=0, r=0;
+ 112:	80 e0       	ldi	r24, 0x00	; 0
+	while (c>9)
+ 114:	02 c0       	rjmp	.+4      	; 0x11a <Set_Number+0xc>
+	{
+		l++;
+ 116:	8f 5f       	subi	r24, 0xFF	; 255
+		c-=10;
+ 118:	1a 50       	subi	r17, 0x0A	; 10
+//---------------------------------------------------------------------------------------------
+//                     Виводимо двоцифрове число
+void Set_Number(unsigned char c)
+{
+	unsigned char l=0, r=0;
+	while (c>9)
+ 11a:	1a 30       	cpi	r17, 0x0A	; 10
+ 11c:	e0 f7       	brcc	.-8      	; 0x116 <Set_Number+0x8>
+	{
+		l++;
+		c-=10;
+	}
+	r=c;
+	Set_Char(48+l);
+ 11e:	80 5d       	subi	r24, 0xD0	; 208
+ 120:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+	Set_Char(48+r);
+ 124:	81 2f       	mov	r24, r17
+ 126:	80 5d       	subi	r24, 0xD0	; 208
+ 128:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+}
+ 12c:	1f 91       	pop	r17
+ 12e:	08 95       	ret
+
+00000130 <GotoXY>:
+//---------------------------------------------------------------------------------------------
+//                    Міняємо позицію курсора
+void GotoXY(unsigned char x, unsigned char y)
+{
+	char adress=0;
+	adress = (0x40*y+x)|0b10000000;
+ 130:	62 95       	swap	r22
+ 132:	66 0f       	add	r22, r22
+ 134:	66 0f       	add	r22, r22
+ 136:	60 7c       	andi	r22, 0xC0	; 192
+ 138:	68 0f       	add	r22, r24
+	Data(adress, 0);
+ 13a:	86 2f       	mov	r24, r22
+ 13c:	80 68       	ori	r24, 0x80	; 128
+ 13e:	60 e0       	ldi	r22, 0x00	; 0
+ 140:	0e 94 5a 00 	call	0xb4	; 0xb4 <Data>
+}
+ 144:	08 95       	ret
+
+00000146 <LCD_ini>:
+ 146:	8f ef       	ldi	r24, 0xFF	; 255
+ 148:	96 e8       	ldi	r25, 0x86	; 134
+ 14a:	01 97       	sbiw	r24, 0x01	; 1
+ 14c:	f1 f7       	brne	.-4      	; 0x14a <LCD_ini+0x4>
+ 14e:	00 c0       	rjmp	.+0      	; 0x150 <LCD_ini+0xa>
+ 150:	00 00       	nop
+//---------------------------------------------------------------------------------------------
+//                    Ініціалізуємо LCD
+void LCD_ini()
+{
+	_delay_ms(15);
+	Data(0b00111000, 0);
+ 152:	88 e3       	ldi	r24, 0x38	; 56
+ 154:	60 e0       	ldi	r22, 0x00	; 0
+ 156:	0e 94 5a 00 	call	0xb4	; 0xb4 <Data>
+ 15a:	8f ef       	ldi	r24, 0xFF	; 255
+ 15c:	93 e2       	ldi	r25, 0x23	; 35
+ 15e:	01 97       	sbiw	r24, 0x01	; 1
+ 160:	f1 f7       	brne	.-4      	; 0x15e <LCD_ini+0x18>
+ 162:	00 c0       	rjmp	.+0      	; 0x164 <LCD_ini+0x1e>
+ 164:	00 00       	nop
+	_delay_ms(4);
+	Data(0b00111000, 0);
+ 166:	88 e3       	ldi	r24, 0x38	; 56
+ 168:	60 e0       	ldi	r22, 0x00	; 0
+ 16a:	0e 94 5a 00 	call	0xb4	; 0xb4 <Data>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 16e:	9e e2       	ldi	r25, 0x2E	; 46
+ 170:	9a 95       	dec	r25
+ 172:	f1 f7       	brne	.-4      	; 0x170 <LCD_ini+0x2a>
+ 174:	00 00       	nop
+	_delay_us(15);
+	Data(0b00111000, 0);
+ 176:	88 e3       	ldi	r24, 0x38	; 56
+ 178:	60 e0       	ldi	r22, 0x00	; 0
+ 17a:	0e 94 5a 00 	call	0xb4	; 0xb4 <Data>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 17e:	8f ef       	ldi	r24, 0xFF	; 255
+ 180:	98 e0       	ldi	r25, 0x08	; 8
+ 182:	01 97       	sbiw	r24, 0x01	; 1
+ 184:	f1 f7       	brne	.-4      	; 0x182 <LCD_ini+0x3c>
+ 186:	00 c0       	rjmp	.+0      	; 0x188 <LCD_ini+0x42>
+ 188:	00 00       	nop
+	_delay_ms(1);
+	Data(0b00111000, 0);
+ 18a:	88 e3       	ldi	r24, 0x38	; 56
+ 18c:	60 e0       	ldi	r22, 0x00	; 0
+ 18e:	0e 94 5a 00 	call	0xb4	; 0xb4 <Data>
+ 192:	8f ef       	ldi	r24, 0xFF	; 255
+ 194:	98 e0       	ldi	r25, 0x08	; 8
+ 196:	01 97       	sbiw	r24, 0x01	; 1
+ 198:	f1 f7       	brne	.-4      	; 0x196 <LCD_ini+0x50>
+ 19a:	00 c0       	rjmp	.+0      	; 0x19c <LCD_ini+0x56>
+ 19c:	00 00       	nop
+	_delay_ms(1);
+	Data(0b00001100, 0);
+ 19e:	8c e0       	ldi	r24, 0x0C	; 12
+ 1a0:	60 e0       	ldi	r22, 0x00	; 0
+ 1a2:	0e 94 5a 00 	call	0xb4	; 0xb4 <Data>
+ 1a6:	8f ef       	ldi	r24, 0xFF	; 255
+ 1a8:	98 e0       	ldi	r25, 0x08	; 8
+ 1aa:	01 97       	sbiw	r24, 0x01	; 1
+ 1ac:	f1 f7       	brne	.-4      	; 0x1aa <LCD_ini+0x64>
+ 1ae:	00 c0       	rjmp	.+0      	; 0x1b0 <LCD_ini+0x6a>
+ 1b0:	00 00       	nop
+	_delay_ms(1);
+	Data(0b00000110, 0);
+ 1b2:	86 e0       	ldi	r24, 0x06	; 6
+ 1b4:	60 e0       	ldi	r22, 0x00	; 0
+ 1b6:	0e 94 5a 00 	call	0xb4	; 0xb4 <Data>
+ 1ba:	8f ef       	ldi	r24, 0xFF	; 255
+ 1bc:	98 e0       	ldi	r25, 0x08	; 8
+ 1be:	01 97       	sbiw	r24, 0x01	; 1
+ 1c0:	f1 f7       	brne	.-4      	; 0x1be <LCD_ini+0x78>
+ 1c2:	00 c0       	rjmp	.+0      	; 0x1c4 <LCD_ini+0x7e>
+ 1c4:	00 00       	nop
+	_delay_ms(1);
+}
+ 1c6:	08 95       	ret
+
+000001c8 <Clear_LCD>:
+
+//---------------------------------------------------------------------------------------------
+//                    Очищуємо екран
+void Clear_LCD()
+{
+ 1c8:	cf 93       	push	r28
+ 1ca:	df 93       	push	r29
+	GotoXY(0, 0);
+ 1cc:	80 e0       	ldi	r24, 0x00	; 0
+ 1ce:	60 e0       	ldi	r22, 0x00	; 0
+ 1d0:	0e 94 98 00 	call	0x130	; 0x130 <GotoXY>
+	Set_String("                ");
+ 1d4:	c0 e6       	ldi	r28, 0x60	; 96
+ 1d6:	d0 e0       	ldi	r29, 0x00	; 0
+ 1d8:	ce 01       	movw	r24, r28
+ 1da:	0e 94 74 00 	call	0xe8	; 0xe8 <Set_String>
+	GotoXY(0, 1);
+ 1de:	80 e0       	ldi	r24, 0x00	; 0
+ 1e0:	61 e0       	ldi	r22, 0x01	; 1
+ 1e2:	0e 94 98 00 	call	0x130	; 0x130 <GotoXY>
+	Set_String("                ");
+ 1e6:	ce 01       	movw	r24, r28
+ 1e8:	0e 94 74 00 	call	0xe8	; 0xe8 <Set_String>
+}
+ 1ec:	df 91       	pop	r29
+ 1ee:	cf 91       	pop	r28
+ 1f0:	08 95       	ret
+
+000001f2 <OneWireInit>:
+	volatile unsigned char *OneWirePORT;
+	unsigned char LegsNumber;
+} OneWire;
+
+void OneWireInit(OneWire OW)
+{
+ 1f2:	df 93       	push	r29
+ 1f4:	cf 93       	push	r28
+ 1f6:	cd b7       	in	r28, 0x3d	; 61
+ 1f8:	de b7       	in	r29, 0x3e	; 62
+ 1fa:	27 97       	sbiw	r28, 0x07	; 7
+ 1fc:	0f b6       	in	r0, 0x3f	; 63
+ 1fe:	f8 94       	cli
+ 200:	de bf       	out	0x3e, r29	; 62
+ 202:	0f be       	out	0x3f, r0	; 63
+ 204:	cd bf       	out	0x3d, r28	; 61
+ 206:	29 83       	std	Y+1, r18	; 0x01
+ 208:	3a 83       	std	Y+2, r19	; 0x02
+ 20a:	4b 83       	std	Y+3, r20	; 0x03
+ 20c:	5c 83       	std	Y+4, r21	; 0x04
+ 20e:	6d 83       	std	Y+5, r22	; 0x05
+ 210:	7e 83       	std	Y+6, r23	; 0x06
+ 212:	8f 83       	std	Y+7, r24	; 0x07
+	//виставляємо лінію на вхід без підтягуючого резистора і робимо паузу
+	*OW.OneWirePORT &= ~(1<<OW.LegsNumber); 	//not pullup or "0"-out
+ 214:	ed 81       	ldd	r30, Y+5	; 0x05
+ 216:	fe 81       	ldd	r31, Y+6	; 0x06
+ 218:	20 81       	ld	r18, Z
+ 21a:	81 e0       	ldi	r24, 0x01	; 1
+ 21c:	90 e0       	ldi	r25, 0x00	; 0
+ 21e:	0f 80       	ldd	r0, Y+7	; 0x07
+ 220:	02 c0       	rjmp	.+4      	; 0x226 <OneWireInit+0x34>
+ 222:	88 0f       	add	r24, r24
+ 224:	99 1f       	adc	r25, r25
+ 226:	0a 94       	dec	r0
+ 228:	e2 f7       	brpl	.-8      	; 0x222 <OneWireInit+0x30>
+ 22a:	80 95       	com	r24
+ 22c:	28 23       	and	r18, r24
+ 22e:	20 83       	st	Z, r18
+	*OW.OneWireDDR  &= ~(1<<OW.LegsNumber); 	//Z-input
+ 230:	e9 81       	ldd	r30, Y+1	; 0x01
+ 232:	fa 81       	ldd	r31, Y+2	; 0x02
+ 234:	90 81       	ld	r25, Z
+ 236:	98 23       	and	r25, r24
+ 238:	90 83       	st	Z, r25
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 23a:	81 e5       	ldi	r24, 0x51	; 81
+ 23c:	94 e0       	ldi	r25, 0x04	; 4
+ 23e:	01 97       	sbiw	r24, 0x01	; 1
+ 240:	f1 f7       	brne	.-4      	; 0x23e <OneWireInit+0x4c>
+ 242:	00 c0       	rjmp	.+0      	; 0x244 <OneWireInit+0x52>
+ 244:	00 00       	nop
+	_delay_us(480);							
+}
+ 246:	27 96       	adiw	r28, 0x07	; 7
+ 248:	0f b6       	in	r0, 0x3f	; 63
+ 24a:	f8 94       	cli
+ 24c:	de bf       	out	0x3e, r29	; 62
+ 24e:	0f be       	out	0x3f, r0	; 63
+ 250:	cd bf       	out	0x3d, r28	; 61
+ 252:	cf 91       	pop	r28
+ 254:	df 91       	pop	r29
+ 256:	08 95       	ret
+
+00000258 <Initial>:
+	{	}
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void Initial()
+{
+	DDRA  = 0xFF; // Ініціалізація портів
+ 258:	8f ef       	ldi	r24, 0xFF	; 255
+ 25a:	8a bb       	out	0x1a, r24	; 26
+	PORTA = 0x00;
+ 25c:	1b ba       	out	0x1b, r1	; 27
+	DDRB  = 0xFF;
+ 25e:	87 bb       	out	0x17, r24	; 23
+	PORTB = 0x00;
+ 260:	18 ba       	out	0x18, r1	; 24
+	DDRC  = 0x00;
+ 262:	14 ba       	out	0x14, r1	; 20
+	PORTC = 0xFF;
+ 264:	85 bb       	out	0x15, r24	; 21
+	DDRD=0b11111110; 
+ 266:	8e ef       	ldi	r24, 0xFE	; 254
+ 268:	81 bb       	out	0x11, r24	; 17
+	PORTD=0b00000001;
+ 26a:	81 e0       	ldi	r24, 0x01	; 1
+ 26c:	82 bb       	out	0x12, r24	; 18
+	UBRRL = (unsigned char)(UBRRcalc); // Ініціалізація USART
+ 26e:	9b e3       	ldi	r25, 0x3B	; 59
+ 270:	99 b9       	out	0x09, r25	; 9
+    UBRRH = (unsigned char)(UBRRcalc>>8); // Швидкість передачі
+ 272:	10 bc       	out	0x20, r1	; 32
+    UCSRA = (1<<MPCM); // Мультипроцесорний режим
+ 274:	8b b9       	out	0x0b, r24	; 11
+    UCSRC = (1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0)|(1<<USBS);  // Формат кадру 9n2 без перевірки парності
+ 276:	8e e8       	ldi	r24, 0x8E	; 142
+ 278:	80 bd       	out	0x20, r24	; 32
+    UCSRB = (1<<UCSZ2)|(1<<RXEN)|(1<<TXEN)|(1<<RXCIE)|(1<<TXCIE); // Дозвіл прийому-передачі+перерив.прийому,заверш.перед.+9n
+ 27a:	8c ed       	ldi	r24, 0xDC	; 220
+ 27c:	8a b9       	out	0x0a, r24	; 10
+	LCD_ini(); // Ініціалізація LCD
+ 27e:	0e 94 a3 00 	call	0x146	; 0x146 <LCD_ini>
+	TCCR0 = (1<<WGM01)|(1<<CS02)|(1<<CS00); // Ініціалізація таймера
+ 282:	8d e0       	ldi	r24, 0x0D	; 13
+ 284:	83 bf       	out	0x33, r24	; 51
+	OCR0  = 0x77;
+ 286:	87 e7       	ldi	r24, 0x77	; 119
+ 288:	8c bf       	out	0x3c, r24	; 60
+	TIMSK = (1<<OCIE0);
+ 28a:	82 e0       	ldi	r24, 0x02	; 2
+ 28c:	89 bf       	out	0x39, r24	; 57
+	OneWireInit(OW1); // Ініціалізація 1-Wire шини
+ 28e:	20 91 71 00 	lds	r18, 0x0071
+ 292:	30 91 72 00 	lds	r19, 0x0072
+ 296:	40 91 73 00 	lds	r20, 0x0073
+ 29a:	50 91 74 00 	lds	r21, 0x0074
+ 29e:	60 91 75 00 	lds	r22, 0x0075
+ 2a2:	70 91 76 00 	lds	r23, 0x0076
+ 2a6:	80 91 77 00 	lds	r24, 0x0077
+ 2aa:	0e 94 f9 00 	call	0x1f2	; 0x1f2 <OneWireInit>
+	OneWireInit(OW2); // Ініціалізація 1-Wire шини
+ 2ae:	20 91 78 00 	lds	r18, 0x0078
+ 2b2:	30 91 79 00 	lds	r19, 0x0079
+ 2b6:	40 91 7a 00 	lds	r20, 0x007A
+ 2ba:	50 91 7b 00 	lds	r21, 0x007B
+ 2be:	60 91 7c 00 	lds	r22, 0x007C
+ 2c2:	70 91 7d 00 	lds	r23, 0x007D
+ 2c6:	80 91 7e 00 	lds	r24, 0x007E
+ 2ca:	0e 94 f9 00 	call	0x1f2	; 0x1f2 <OneWireInit>
+}
+ 2ce:	08 95       	ret
+
+000002d0 <OneWireReset>:
+//---------------------------------------------------------------------------
+unsigned char OneWireReset(OneWire OW)
+{
+ 2d0:	df 93       	push	r29
+ 2d2:	cf 93       	push	r28
+ 2d4:	cd b7       	in	r28, 0x3d	; 61
+ 2d6:	de b7       	in	r29, 0x3e	; 62
+ 2d8:	27 97       	sbiw	r28, 0x07	; 7
+ 2da:	0f b6       	in	r0, 0x3f	; 63
+ 2dc:	f8 94       	cli
+ 2de:	de bf       	out	0x3e, r29	; 62
+ 2e0:	0f be       	out	0x3f, r0	; 63
+ 2e2:	cd bf       	out	0x3d, r28	; 61
+ 2e4:	29 83       	std	Y+1, r18	; 0x01
+ 2e6:	3a 83       	std	Y+2, r19	; 0x02
+ 2e8:	4b 83       	std	Y+3, r20	; 0x03
+ 2ea:	5c 83       	std	Y+4, r21	; 0x04
+ 2ec:	6d 83       	std	Y+5, r22	; 0x05
+ 2ee:	7e 83       	std	Y+6, r23	; 0x06
+ 2f0:	8f 83       	std	Y+7, r24	; 0x07
+	unsigned char condition=1, res;
+	//якщо прапор переривання виставлений, тоді скидуємо його
+	if(SREG & (1<<7)) cli();
+	else condition=0;
+ 2f2:	e9 81       	ldd	r30, Y+1	; 0x01
+ 2f4:	fa 81       	ldd	r31, Y+2	; 0x02
+//---------------------------------------------------------------------------
+unsigned char OneWireReset(OneWire OW)
+{
+	unsigned char condition=1, res;
+	//якщо прапор переривання виставлений, тоді скидуємо його
+	if(SREG & (1<<7)) cli();
+ 2f6:	0f b6       	in	r0, 0x3f	; 63
+ 2f8:	07 fe       	sbrs	r0, 7
+ 2fa:	03 c0       	rjmp	.+6      	; 0x302 <OneWireReset+0x32>
+ 2fc:	f8 94       	cli
+	_delay_us(480);							
+}
+//---------------------------------------------------------------------------
+unsigned char OneWireReset(OneWire OW)
+{
+	unsigned char condition=1, res;
+ 2fe:	41 e0       	ldi	r20, 0x01	; 1
+ 300:	01 c0       	rjmp	.+2      	; 0x304 <OneWireReset+0x34>
+	//якщо прапор переривання виставлений, тоді скидуємо його
+	if(SREG & (1<<7)) cli();
+	else condition=0;
+ 302:	40 e0       	ldi	r20, 0x00	; 0
+	*OW.OneWireDDR  |=  (1<<OW.LegsNumber); 		//output
+ 304:	90 81       	ld	r25, Z
+ 306:	21 e0       	ldi	r18, 0x01	; 1
+ 308:	30 e0       	ldi	r19, 0x00	; 0
+ 30a:	08 2e       	mov	r0, r24
+ 30c:	02 c0       	rjmp	.+4      	; 0x312 <OneWireReset+0x42>
+ 30e:	22 0f       	add	r18, r18
+ 310:	33 1f       	adc	r19, r19
+ 312:	0a 94       	dec	r0
+ 314:	e2 f7       	brpl	.-8      	; 0x30e <OneWireReset+0x3e>
+ 316:	92 2b       	or	r25, r18
+ 318:	90 83       	st	Z, r25
+ 31a:	a1 e5       	ldi	r26, 0x51	; 81
+ 31c:	b4 e0       	ldi	r27, 0x04	; 4
+ 31e:	11 97       	sbiw	r26, 0x01	; 1
+ 320:	f1 f7       	brne	.-4      	; 0x31e <OneWireReset+0x4e>
+ 322:	00 c0       	rjmp	.+0      	; 0x324 <OneWireReset+0x54>
+ 324:	00 00       	nop
+	_delay_us(480);							
+
+	*OW.OneWireDDR  &= ~(1<<OW.LegsNumber); 	//Z-input
+ 326:	90 81       	ld	r25, Z
+ 328:	20 95       	com	r18
+ 32a:	29 23       	and	r18, r25
+ 32c:	20 83       	st	Z, r18
+ 32e:	b7 ed       	ldi	r27, 0xD7	; 215
+ 330:	ba 95       	dec	r27
+ 332:	f1 f7       	brne	.-4      	; 0x330 <OneWireReset+0x60>
+ 334:	00 00       	nop
+	_delay_us(70);							
+
+	if( (*OW.OneWirePIN)&(1<<OW.LegsNumber) )   res=0;
+ 336:	eb 81       	ldd	r30, Y+3	; 0x03
+ 338:	fc 81       	ldd	r31, Y+4	; 0x04
+ 33a:	20 81       	ld	r18, Z
+ 33c:	30 e0       	ldi	r19, 0x00	; 0
+ 33e:	02 c0       	rjmp	.+4      	; 0x344 <OneWireReset+0x74>
+ 340:	35 95       	asr	r19
+ 342:	27 95       	ror	r18
+ 344:	8a 95       	dec	r24
+ 346:	e2 f7       	brpl	.-8      	; 0x340 <OneWireReset+0x70>
+ 348:	81 e0       	ldi	r24, 0x01	; 1
+ 34a:	20 fd       	sbrc	r18, 0
+ 34c:	80 e0       	ldi	r24, 0x00	; 0
+ 34e:	e0 eb       	ldi	r30, 0xB0	; 176
+ 350:	f3 e0       	ldi	r31, 0x03	; 3
+ 352:	31 97       	sbiw	r30, 0x01	; 1
+ 354:	f1 f7       	brne	.-4      	; 0x352 <OneWireReset+0x82>
+ 356:	00 c0       	rjmp	.+0      	; 0x358 <OneWireReset+0x88>
+	else		res=1;
+	_delay_us(410);							
+
+	//якщо ми скидували прапор переривання, тоді відновлюємо його
+	if(condition) sei();
+ 358:	44 23       	and	r20, r20
+ 35a:	09 f0       	breq	.+2      	; 0x35e <OneWireReset+0x8e>
+ 35c:	78 94       	sei
+	return res;						//res=1 OK
+}
+ 35e:	27 96       	adiw	r28, 0x07	; 7
+ 360:	0f b6       	in	r0, 0x3f	; 63
+ 362:	f8 94       	cli
+ 364:	de bf       	out	0x3e, r29	; 62
+ 366:	0f be       	out	0x3f, r0	; 63
+ 368:	cd bf       	out	0x3d, r28	; 61
+ 36a:	cf 91       	pop	r28
+ 36c:	df 91       	pop	r29
+ 36e:	08 95       	ret
+
+00000370 <OneWireReadBit>:
+//---------------------------------------------------------------------------
+unsigned char OneWireReadBit(OneWire OW)
+{
+ 370:	df 93       	push	r29
+ 372:	cf 93       	push	r28
+ 374:	cd b7       	in	r28, 0x3d	; 61
+ 376:	de b7       	in	r29, 0x3e	; 62
+ 378:	27 97       	sbiw	r28, 0x07	; 7
+ 37a:	0f b6       	in	r0, 0x3f	; 63
+ 37c:	f8 94       	cli
+ 37e:	de bf       	out	0x3e, r29	; 62
+ 380:	0f be       	out	0x3f, r0	; 63
+ 382:	cd bf       	out	0x3d, r28	; 61
+ 384:	29 83       	std	Y+1, r18	; 0x01
+ 386:	3a 83       	std	Y+2, r19	; 0x02
+ 388:	4b 83       	std	Y+3, r20	; 0x03
+ 38a:	5c 83       	std	Y+4, r21	; 0x04
+ 38c:	6d 83       	std	Y+5, r22	; 0x05
+ 38e:	7e 83       	std	Y+6, r23	; 0x06
+ 390:	8f 83       	std	Y+7, r24	; 0x07
+ 392:	e9 81       	ldd	r30, Y+1	; 0x01
+ 394:	fa 81       	ldd	r31, Y+2	; 0x02
+	unsigned char bit=0;
+	*OW.OneWireDDR  |=  (1<<OW.LegsNumber); 		//output
+ 396:	20 81       	ld	r18, Z
+ 398:	38 2f       	mov	r19, r24
+ 39a:	81 e0       	ldi	r24, 0x01	; 1
+ 39c:	90 e0       	ldi	r25, 0x00	; 0
+ 39e:	03 2e       	mov	r0, r19
+ 3a0:	02 c0       	rjmp	.+4      	; 0x3a6 <OneWireReadBit+0x36>
+ 3a2:	88 0f       	add	r24, r24
+ 3a4:	99 1f       	adc	r25, r25
+ 3a6:	0a 94       	dec	r0
+ 3a8:	e2 f7       	brpl	.-8      	; 0x3a2 <OneWireReadBit+0x32>
+ 3aa:	28 2b       	or	r18, r24
+ 3ac:	20 83       	st	Z, r18
+ 3ae:	92 e1       	ldi	r25, 0x12	; 18
+ 3b0:	9a 95       	dec	r25
+ 3b2:	f1 f7       	brne	.-4      	; 0x3b0 <OneWireReadBit+0x40>
+ 3b4:	00 c0       	rjmp	.+0      	; 0x3b6 <OneWireReadBit+0x46>
+	_delay_us(6);							
+
+	*OW.OneWireDDR  &= ~(1<<OW.LegsNumber); 	//Z-input
+ 3b6:	90 81       	ld	r25, Z
+ 3b8:	80 95       	com	r24
+ 3ba:	89 23       	and	r24, r25
+ 3bc:	80 83       	st	Z, r24
+ 3be:	8b e1       	ldi	r24, 0x1B	; 27
+ 3c0:	8a 95       	dec	r24
+ 3c2:	f1 f7       	brne	.-4      	; 0x3c0 <OneWireReadBit+0x50>
+ 3c4:	00 c0       	rjmp	.+0      	; 0x3c6 <OneWireReadBit+0x56>
+	_delay_us(9);							
+
+	if( (*OW.OneWirePIN)&(1<<OW.LegsNumber) )    bit=1;
+ 3c6:	eb 81       	ldd	r30, Y+3	; 0x03
+ 3c8:	fc 81       	ldd	r31, Y+4	; 0x04
+ 3ca:	80 81       	ld	r24, Z
+ 3cc:	99 ea       	ldi	r25, 0xA9	; 169
+ 3ce:	9a 95       	dec	r25
+ 3d0:	f1 f7       	brne	.-4      	; 0x3ce <OneWireReadBit+0x5e>
+ 3d2:	90 e0       	ldi	r25, 0x00	; 0
+ 3d4:	02 c0       	rjmp	.+4      	; 0x3da <OneWireReadBit+0x6a>
+ 3d6:	95 95       	asr	r25
+ 3d8:	87 95       	ror	r24
+ 3da:	3a 95       	dec	r19
+ 3dc:	e2 f7       	brpl	.-8      	; 0x3d6 <OneWireReadBit+0x66>
+	_delay_us(55);							
+	return bit;
+}
+ 3de:	81 70       	andi	r24, 0x01	; 1
+ 3e0:	27 96       	adiw	r28, 0x07	; 7
+ 3e2:	0f b6       	in	r0, 0x3f	; 63
+ 3e4:	f8 94       	cli
+ 3e6:	de bf       	out	0x3e, r29	; 62
+ 3e8:	0f be       	out	0x3f, r0	; 63
+ 3ea:	cd bf       	out	0x3d, r28	; 61
+ 3ec:	cf 91       	pop	r28
+ 3ee:	df 91       	pop	r29
+ 3f0:	08 95       	ret
+
+000003f2 <OneWireWrite1>:
+//---------------------------------------------------------------------------
+void OneWireWrite1(OneWire OW)
+{
+ 3f2:	df 93       	push	r29
+ 3f4:	cf 93       	push	r28
+ 3f6:	cd b7       	in	r28, 0x3d	; 61
+ 3f8:	de b7       	in	r29, 0x3e	; 62
+ 3fa:	27 97       	sbiw	r28, 0x07	; 7
+ 3fc:	0f b6       	in	r0, 0x3f	; 63
+ 3fe:	f8 94       	cli
+ 400:	de bf       	out	0x3e, r29	; 62
+ 402:	0f be       	out	0x3f, r0	; 63
+ 404:	cd bf       	out	0x3d, r28	; 61
+ 406:	29 83       	std	Y+1, r18	; 0x01
+ 408:	3a 83       	std	Y+2, r19	; 0x02
+ 40a:	4b 83       	std	Y+3, r20	; 0x03
+ 40c:	5c 83       	std	Y+4, r21	; 0x04
+ 40e:	6d 83       	std	Y+5, r22	; 0x05
+ 410:	7e 83       	std	Y+6, r23	; 0x06
+ 412:	8f 83       	std	Y+7, r24	; 0x07
+ 414:	e9 81       	ldd	r30, Y+1	; 0x01
+ 416:	fa 81       	ldd	r31, Y+2	; 0x02
+	*OW.OneWireDDR  |=  (1<<OW.LegsNumber); 		//output 
+ 418:	20 81       	ld	r18, Z
+ 41a:	81 e0       	ldi	r24, 0x01	; 1
+ 41c:	90 e0       	ldi	r25, 0x00	; 0
+ 41e:	0f 80       	ldd	r0, Y+7	; 0x07
+ 420:	02 c0       	rjmp	.+4      	; 0x426 <OneWireWrite1+0x34>
+ 422:	88 0f       	add	r24, r24
+ 424:	99 1f       	adc	r25, r25
+ 426:	0a 94       	dec	r0
+ 428:	e2 f7       	brpl	.-8      	; 0x422 <OneWireWrite1+0x30>
+ 42a:	28 2b       	or	r18, r24
+ 42c:	20 83       	st	Z, r18
+ 42e:	92 e1       	ldi	r25, 0x12	; 18
+ 430:	9a 95       	dec	r25
+ 432:	f1 f7       	brne	.-4      	; 0x430 <OneWireWrite1+0x3e>
+ 434:	00 c0       	rjmp	.+0      	; 0x436 <OneWireWrite1+0x44>
+	_delay_us(6);							
+
+	*OW.OneWireDDR  &= ~(1<<OW.LegsNumber); 	//Z-input
+ 436:	90 81       	ld	r25, Z
+ 438:	80 95       	com	r24
+ 43a:	89 23       	and	r24, r25
+ 43c:	80 83       	st	Z, r24
+ 43e:	84 ec       	ldi	r24, 0xC4	; 196
+ 440:	8a 95       	dec	r24
+ 442:	f1 f7       	brne	.-4      	; 0x440 <OneWireWrite1+0x4e>
+ 444:	00 c0       	rjmp	.+0      	; 0x446 <OneWireWrite1+0x54>
+	_delay_us(64);							
+}
+ 446:	27 96       	adiw	r28, 0x07	; 7
+ 448:	0f b6       	in	r0, 0x3f	; 63
+ 44a:	f8 94       	cli
+ 44c:	de bf       	out	0x3e, r29	; 62
+ 44e:	0f be       	out	0x3f, r0	; 63
+ 450:	cd bf       	out	0x3d, r28	; 61
+ 452:	cf 91       	pop	r28
+ 454:	df 91       	pop	r29
+ 456:	08 95       	ret
+
+00000458 <OneWireWrite0>:
+//---------------------------------------------------------------------------
+void OneWireWrite0(OneWire OW)
+{
+ 458:	df 93       	push	r29
+ 45a:	cf 93       	push	r28
+ 45c:	cd b7       	in	r28, 0x3d	; 61
+ 45e:	de b7       	in	r29, 0x3e	; 62
+ 460:	27 97       	sbiw	r28, 0x07	; 7
+ 462:	0f b6       	in	r0, 0x3f	; 63
+ 464:	f8 94       	cli
+ 466:	de bf       	out	0x3e, r29	; 62
+ 468:	0f be       	out	0x3f, r0	; 63
+ 46a:	cd bf       	out	0x3d, r28	; 61
+ 46c:	29 83       	std	Y+1, r18	; 0x01
+ 46e:	3a 83       	std	Y+2, r19	; 0x02
+ 470:	4b 83       	std	Y+3, r20	; 0x03
+ 472:	5c 83       	std	Y+4, r21	; 0x04
+ 474:	6d 83       	std	Y+5, r22	; 0x05
+ 476:	7e 83       	std	Y+6, r23	; 0x06
+ 478:	8f 83       	std	Y+7, r24	; 0x07
+ 47a:	e9 81       	ldd	r30, Y+1	; 0x01
+ 47c:	fa 81       	ldd	r31, Y+2	; 0x02
+	*OW.OneWireDDR  |=  (1<<OW.LegsNumber); 		//output 
+ 47e:	20 81       	ld	r18, Z
+ 480:	81 e0       	ldi	r24, 0x01	; 1
+ 482:	90 e0       	ldi	r25, 0x00	; 0
+ 484:	0f 80       	ldd	r0, Y+7	; 0x07
+ 486:	02 c0       	rjmp	.+4      	; 0x48c <OneWireWrite0+0x34>
+ 488:	88 0f       	add	r24, r24
+ 48a:	99 1f       	adc	r25, r25
+ 48c:	0a 94       	dec	r0
+ 48e:	e2 f7       	brpl	.-8      	; 0x488 <OneWireWrite0+0x30>
+ 490:	28 2b       	or	r18, r24
+ 492:	20 83       	st	Z, r18
+ 494:	98 eb       	ldi	r25, 0xB8	; 184
+ 496:	9a 95       	dec	r25
+ 498:	f1 f7       	brne	.-4      	; 0x496 <OneWireWrite0+0x3e>
+ 49a:	00 00       	nop
+	_delay_us(60);							
+
+	*OW.OneWireDDR  &= ~(1<<OW.LegsNumber); 	//Z-input
+ 49c:	90 81       	ld	r25, Z
+ 49e:	80 95       	com	r24
+ 4a0:	89 23       	and	r24, r25
+ 4a2:	80 83       	st	Z, r24
+ 4a4:	8f e1       	ldi	r24, 0x1F	; 31
+ 4a6:	8a 95       	dec	r24
+ 4a8:	f1 f7       	brne	.-4      	; 0x4a6 <OneWireWrite0+0x4e>
+	_delay_us(10);							
+}
+ 4aa:	27 96       	adiw	r28, 0x07	; 7
+ 4ac:	0f b6       	in	r0, 0x3f	; 63
+ 4ae:	f8 94       	cli
+ 4b0:	de bf       	out	0x3e, r29	; 62
+ 4b2:	0f be       	out	0x3f, r0	; 63
+ 4b4:	cd bf       	out	0x3d, r28	; 61
+ 4b6:	cf 91       	pop	r28
+ 4b8:	df 91       	pop	r29
+ 4ba:	08 95       	ret
+
+000004bc <OneWireReadByte>:
+//---------------------------------------------------------------------------
+unsigned char OneWireReadByte(OneWire OW)
+{
+ 4bc:	0f 93       	push	r16
+ 4be:	1f 93       	push	r17
+ 4c0:	df 93       	push	r29
+ 4c2:	cf 93       	push	r28
+ 4c4:	cd b7       	in	r28, 0x3d	; 61
+ 4c6:	de b7       	in	r29, 0x3e	; 62
+ 4c8:	27 97       	sbiw	r28, 0x07	; 7
+ 4ca:	0f b6       	in	r0, 0x3f	; 63
+ 4cc:	f8 94       	cli
+ 4ce:	de bf       	out	0x3e, r29	; 62
+ 4d0:	0f be       	out	0x3f, r0	; 63
+ 4d2:	cd bf       	out	0x3d, r28	; 61
+ 4d4:	29 83       	std	Y+1, r18	; 0x01
+ 4d6:	3a 83       	std	Y+2, r19	; 0x02
+ 4d8:	4b 83       	std	Y+3, r20	; 0x03
+ 4da:	5c 83       	std	Y+4, r21	; 0x04
+ 4dc:	6d 83       	std	Y+5, r22	; 0x05
+ 4de:	7e 83       	std	Y+6, r23	; 0x06
+ 4e0:	8f 83       	std	Y+7, r24	; 0x07
+	unsigned char i=8,byte=0;
+ 4e2:	10 e0       	ldi	r17, 0x00	; 0
+ 4e4:	08 e0       	ldi	r16, 0x08	; 8
+	while(i--)
+ 4e6:	0e c0       	rjmp	.+28     	; 0x504 <OneWireReadByte+0x48>
+	{
+		byte >>= 1;
+		byte |= OneWireReadBit(OW) << 7;
+ 4e8:	29 81       	ldd	r18, Y+1	; 0x01
+ 4ea:	3a 81       	ldd	r19, Y+2	; 0x02
+ 4ec:	4b 81       	ldd	r20, Y+3	; 0x03
+ 4ee:	5c 81       	ldd	r21, Y+4	; 0x04
+ 4f0:	6d 81       	ldd	r22, Y+5	; 0x05
+ 4f2:	7e 81       	ldd	r23, Y+6	; 0x06
+ 4f4:	8f 81       	ldd	r24, Y+7	; 0x07
+ 4f6:	0e 94 b8 01 	call	0x370	; 0x370 <OneWireReadBit>
+ 4fa:	87 95       	ror	r24
+ 4fc:	88 27       	eor	r24, r24
+ 4fe:	87 95       	ror	r24
+unsigned char OneWireReadByte(OneWire OW)
+{
+	unsigned char i=8,byte=0;
+	while(i--)
+	{
+		byte >>= 1;
+ 500:	16 95       	lsr	r17
+		byte |= OneWireReadBit(OW) << 7;
+ 502:	18 2b       	or	r17, r24
+}
+//---------------------------------------------------------------------------
+unsigned char OneWireReadByte(OneWire OW)
+{
+	unsigned char i=8,byte=0;
+	while(i--)
+ 504:	01 50       	subi	r16, 0x01	; 1
+ 506:	80 f7       	brcc	.-32     	; 0x4e8 <OneWireReadByte+0x2c>
+	{
+		byte >>= 1;
+		byte |= OneWireReadBit(OW) << 7;
+	}
+	return byte;
+}
+ 508:	81 2f       	mov	r24, r17
+ 50a:	27 96       	adiw	r28, 0x07	; 7
+ 50c:	0f b6       	in	r0, 0x3f	; 63
+ 50e:	f8 94       	cli
+ 510:	de bf       	out	0x3e, r29	; 62
+ 512:	0f be       	out	0x3f, r0	; 63
+ 514:	cd bf       	out	0x3d, r28	; 61
+ 516:	cf 91       	pop	r28
+ 518:	df 91       	pop	r29
+ 51a:	1f 91       	pop	r17
+ 51c:	0f 91       	pop	r16
+ 51e:	08 95       	ret
+
+00000520 <OneWireWriteByte>:
+//---------------------------------------------------------------------------
+void OneWireWriteByte(OneWire OW, unsigned char byte)
+{
+ 520:	0f 93       	push	r16
+ 522:	1f 93       	push	r17
+ 524:	df 93       	push	r29
+ 526:	cf 93       	push	r28
+ 528:	cd b7       	in	r28, 0x3d	; 61
+ 52a:	de b7       	in	r29, 0x3e	; 62
+ 52c:	27 97       	sbiw	r28, 0x07	; 7
+ 52e:	0f b6       	in	r0, 0x3f	; 63
+ 530:	f8 94       	cli
+ 532:	de bf       	out	0x3e, r29	; 62
+ 534:	0f be       	out	0x3f, r0	; 63
+ 536:	cd bf       	out	0x3d, r28	; 61
+ 538:	29 83       	std	Y+1, r18	; 0x01
+ 53a:	3a 83       	std	Y+2, r19	; 0x02
+ 53c:	4b 83       	std	Y+3, r20	; 0x03
+ 53e:	5c 83       	std	Y+4, r21	; 0x04
+ 540:	6d 83       	std	Y+5, r22	; 0x05
+ 542:	7e 83       	std	Y+6, r23	; 0x06
+ 544:	8f 83       	std	Y+7, r24	; 0x07
+	unsigned char i=8;
+ 546:	18 e0       	ldi	r17, 0x08	; 8
+	while(i--)
+ 548:	16 c0       	rjmp	.+44     	; 0x576 <OneWireWriteByte+0x56>
+	{
+		if(byte&1)	OneWireWrite1(OW);
+ 54a:	00 ff       	sbrs	r16, 0
+ 54c:	0a c0       	rjmp	.+20     	; 0x562 <OneWireWriteByte+0x42>
+ 54e:	29 81       	ldd	r18, Y+1	; 0x01
+ 550:	3a 81       	ldd	r19, Y+2	; 0x02
+ 552:	4b 81       	ldd	r20, Y+3	; 0x03
+ 554:	5c 81       	ldd	r21, Y+4	; 0x04
+ 556:	6d 81       	ldd	r22, Y+5	; 0x05
+ 558:	7e 81       	ldd	r23, Y+6	; 0x06
+ 55a:	8f 81       	ldd	r24, Y+7	; 0x07
+ 55c:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <OneWireWrite1>
+ 560:	09 c0       	rjmp	.+18     	; 0x574 <OneWireWriteByte+0x54>
+		else		OneWireWrite0(OW);
+ 562:	29 81       	ldd	r18, Y+1	; 0x01
+ 564:	3a 81       	ldd	r19, Y+2	; 0x02
+ 566:	4b 81       	ldd	r20, Y+3	; 0x03
+ 568:	5c 81       	ldd	r21, Y+4	; 0x04
+ 56a:	6d 81       	ldd	r22, Y+5	; 0x05
+ 56c:	7e 81       	ldd	r23, Y+6	; 0x06
+ 56e:	8f 81       	ldd	r24, Y+7	; 0x07
+ 570:	0e 94 2c 02 	call	0x458	; 0x458 <OneWireWrite0>
+		byte>>=1;
+ 574:	06 95       	lsr	r16
+}
+//---------------------------------------------------------------------------
+void OneWireWriteByte(OneWire OW, unsigned char byte)
+{
+	unsigned char i=8;
+	while(i--)
+ 576:	11 50       	subi	r17, 0x01	; 1
+ 578:	40 f7       	brcc	.-48     	; 0x54a <OneWireWriteByte+0x2a>
+	{
+		if(byte&1)	OneWireWrite1(OW);
+		else		OneWireWrite0(OW);
+		byte>>=1;
+	}
+}
+ 57a:	27 96       	adiw	r28, 0x07	; 7
+ 57c:	0f b6       	in	r0, 0x3f	; 63
+ 57e:	f8 94       	cli
+ 580:	de bf       	out	0x3e, r29	; 62
+ 582:	0f be       	out	0x3f, r0	; 63
+ 584:	cd bf       	out	0x3d, r28	; 61
+ 586:	cf 91       	pop	r28
+ 588:	df 91       	pop	r29
+ 58a:	1f 91       	pop	r17
+ 58c:	0f 91       	pop	r16
+ 58e:	08 95       	ret
+
+00000590 <__vector_13>:
+unsigned char  BufferOUT[BUF_SIZE],  StartBufOUT = 0, EndBufOUT = 0, Boof[4];
+volatile unsigned char  waitread = 0, write = 0;
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART_RXC_vect) // Переривання при прийнятому байті                   
+{ 
+ 590:	1f 92       	push	r1
+ 592:	0f 92       	push	r0
+ 594:	0f b6       	in	r0, 0x3f	; 63
+ 596:	0f 92       	push	r0
+ 598:	11 24       	eor	r1, r1
+ 59a:	2f 93       	push	r18
+ 59c:	3f 93       	push	r19
+ 59e:	4f 93       	push	r20
+ 5a0:	5f 93       	push	r21
+ 5a2:	6f 93       	push	r22
+ 5a4:	7f 93       	push	r23
+ 5a6:	8f 93       	push	r24
+ 5a8:	9f 93       	push	r25
+ 5aa:	af 93       	push	r26
+ 5ac:	bf 93       	push	r27
+ 5ae:	cf 93       	push	r28
+ 5b0:	df 93       	push	r29
+ 5b2:	ef 93       	push	r30
+ 5b4:	ff 93       	push	r31
+	if (UDR == address) // Якщо адреси співпадають
+ 5b6:	9c b1       	in	r25, 0x0c	; 12
+ 5b8:	80 91 85 00 	lds	r24, 0x0085
+ 5bc:	98 17       	cp	r25, r24
+ 5be:	d9 f4       	brne	.+54     	; 0x5f6 <__vector_13+0x66>
+	{
+		WriteBufOUT(Boof[0]); // Записуємо збережені байти температури в буфер
+ 5c0:	c9 e4       	ldi	r28, 0x49	; 73
+ 5c2:	d0 e0       	ldi	r29, 0x00	; 0
+ 5c4:	80 91 86 00 	lds	r24, 0x0086
+ 5c8:	90 e0       	ldi	r25, 0x00	; 0
+ 5ca:	fe 01       	movw	r30, r28
+ 5cc:	09 95       	icall
+		WriteBufOUT(Boof[1]);
+ 5ce:	80 91 87 00 	lds	r24, 0x0087
+ 5d2:	90 e0       	ldi	r25, 0x00	; 0
+ 5d4:	fe 01       	movw	r30, r28
+ 5d6:	09 95       	icall
+		WriteBufOUT(Boof[2]);
+ 5d8:	80 91 88 00 	lds	r24, 0x0088
+ 5dc:	90 e0       	ldi	r25, 0x00	; 0
+ 5de:	fe 01       	movw	r30, r28
+ 5e0:	09 95       	icall
+		WriteBufOUT(Boof[3]);
+ 5e2:	80 91 89 00 	lds	r24, 0x0089
+ 5e6:	90 e0       	ldi	r25, 0x00	; 0
+ 5e8:	fe 01       	movw	r30, r28
+ 5ea:	09 95       	icall
+	 	UCSRA &= ~(1<<MPCM); // Відключення мультиплексорного режиму
+ 5ec:	58 98       	cbi	0x0b, 0	; 11
+	 	UCSRB |= 1<<UDRIE; // Включення переривання при спорожненому UDR
+ 5ee:	55 9a       	sbi	0x0a, 5	; 10
+		write = 1;
+ 5f0:	81 e0       	ldi	r24, 0x01	; 1
+ 5f2:	80 93 84 00 	sts	0x0084, r24
+	}                         
+}           
+ 5f6:	ff 91       	pop	r31
+ 5f8:	ef 91       	pop	r30
+ 5fa:	df 91       	pop	r29
+ 5fc:	cf 91       	pop	r28
+ 5fe:	bf 91       	pop	r27
+ 600:	af 91       	pop	r26
+ 602:	9f 91       	pop	r25
+ 604:	8f 91       	pop	r24
+ 606:	7f 91       	pop	r23
+ 608:	6f 91       	pop	r22
+ 60a:	5f 91       	pop	r21
+ 60c:	4f 91       	pop	r20
+ 60e:	3f 91       	pop	r19
+ 610:	2f 91       	pop	r18
+ 612:	0f 90       	pop	r0
+ 614:	0f be       	out	0x3f, r0	; 63
+ 616:	0f 90       	pop	r0
+ 618:	1f 90       	pop	r1
+ 61a:	18 95       	reti
+
+0000061c <__vector_14>:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART_UDRE_vect ) // Переривання при спорожненому UDR              
+{
+ 61c:	1f 92       	push	r1
+ 61e:	0f 92       	push	r0
+ 620:	0f b6       	in	r0, 0x3f	; 63
+ 622:	0f 92       	push	r0
+ 624:	11 24       	eor	r1, r1
+ 626:	8f 93       	push	r24
+ 628:	9f 93       	push	r25
+ 62a:	ef 93       	push	r30
+ 62c:	ff 93       	push	r31
+	PORTD |= 1<<PD2; // Переходимо у режим передачі  
+ 62e:	92 9a       	sbi	0x12, 2	; 18
+    asm("nop");
+ 630:	00 00       	nop
+    UDR = BufferOUT[StartBufOUT++]; // Відправляємо значення з буферу
+ 632:	80 91 81 00 	lds	r24, 0x0081
+ 636:	e8 2f       	mov	r30, r24
+ 638:	f0 e0       	ldi	r31, 0x00	; 0
+ 63a:	e6 57       	subi	r30, 0x76	; 118
+ 63c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 63e:	90 81       	ld	r25, Z
+ 640:	9c b9       	out	0x0c, r25	; 12
+ 642:	8f 5f       	subi	r24, 0xFF	; 255
+    StartBufOUT &= BUF_MASK;
+ 644:	83 70       	andi	r24, 0x03	; 3
+ 646:	80 93 81 00 	sts	0x0081, r24
+    if( StartBufOUT == EndBufOUT ) // Якщо буфер порожній
+ 64a:	90 91 82 00 	lds	r25, 0x0082
+ 64e:	89 17       	cp	r24, r25
+ 650:	21 f4       	brne	.+8      	; 0x65a <__vector_14+0x3e>
+	{
+    	UCSRB &= ~(1<<UDRIE); // Відключення переривання при спорожненому UDR
+ 652:	55 98       	cbi	0x0a, 5	; 10
+		UCSRA |= (1<<MPCM); // Включення мультиплексорного режиму
+ 654:	58 9a       	sbi	0x0b, 0	; 11
+		write=0;
+ 656:	10 92 84 00 	sts	0x0084, r1
+	}
+}
+ 65a:	ff 91       	pop	r31
+ 65c:	ef 91       	pop	r30
+ 65e:	9f 91       	pop	r25
+ 660:	8f 91       	pop	r24
+ 662:	0f 90       	pop	r0
+ 664:	0f be       	out	0x3f, r0	; 63
+ 666:	0f 90       	pop	r0
+ 668:	1f 90       	pop	r1
+ 66a:	18 95       	reti
+
+0000066c <__vector_15>:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART_TXC_vect ) // Переривання при відправленому байті                 
+{
+ 66c:	1f 92       	push	r1
+ 66e:	0f 92       	push	r0
+ 670:	0f b6       	in	r0, 0x3f	; 63
+ 672:	0f 92       	push	r0
+ 674:	11 24       	eor	r1, r1
+ 676:	8f 93       	push	r24
+ 678:	9f 93       	push	r25
+	if( StartBufOUT == EndBufOUT ) PORTD &= ~(1<<PD2); // Переходимо у режим прийому
+ 67a:	90 91 81 00 	lds	r25, 0x0081
+ 67e:	80 91 82 00 	lds	r24, 0x0082
+ 682:	98 17       	cp	r25, r24
+ 684:	09 f4       	brne	.+2      	; 0x688 <__vector_15+0x1c>
+ 686:	92 98       	cbi	0x12, 2	; 18
+}  
+ 688:	9f 91       	pop	r25
+ 68a:	8f 91       	pop	r24
+ 68c:	0f 90       	pop	r0
+ 68e:	0f be       	out	0x3f, r0	; 63
+ 690:	0f 90       	pop	r0
+ 692:	1f 90       	pop	r1
+ 694:	18 95       	reti
+
+00000696 <__vector_10>:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(TIMER0_COMP_vect) // таймер  на опитування давачів
+{
+ 696:	1f 92       	push	r1
+ 698:	0f 92       	push	r0
+ 69a:	0f b6       	in	r0, 0x3f	; 63
+ 69c:	0f 92       	push	r0
+ 69e:	11 24       	eor	r1, r1
+ 6a0:	ff 92       	push	r15
+ 6a2:	0f 93       	push	r16
+ 6a4:	1f 93       	push	r17
+ 6a6:	2f 93       	push	r18
+ 6a8:	3f 93       	push	r19
+ 6aa:	4f 93       	push	r20
+ 6ac:	5f 93       	push	r21
+ 6ae:	6f 93       	push	r22
+ 6b0:	7f 93       	push	r23
+ 6b2:	8f 93       	push	r24
+ 6b4:	9f 93       	push	r25
+ 6b6:	af 93       	push	r26
+ 6b8:	bf 93       	push	r27
+ 6ba:	ef 93       	push	r30
+ 6bc:	ff 93       	push	r31
+ 6be:	df 93       	push	r29
+ 6c0:	cf 93       	push	r28
+ 6c2:	cd b7       	in	r28, 0x3d	; 61
+ 6c4:	de b7       	in	r29, 0x3e	; 62
+ 6c6:	25 97       	sbiw	r28, 0x05	; 5
+ 6c8:	de bf       	out	0x3e, r29	; 62
+ 6ca:	cd bf       	out	0x3d, r28	; 61
+	timer++;
+ 6cc:	80 91 80 00 	lds	r24, 0x0080
+ 6d0:	8f 5f       	subi	r24, 0xFF	; 255
+ 6d2:	80 93 80 00 	sts	0x0080, r24
+	if (timer==40)
+ 6d6:	88 32       	cpi	r24, 0x28	; 40
+ 6d8:	09 f0       	breq	.+2      	; 0x6dc <__vector_10+0x46>
+ 6da:	b0 c1       	rjmp	.+864    	; 0xa3c <__stack+0x1dd>
+	{
+		timer=0;
+ 6dc:	10 92 80 00 	sts	0x0080, r1
+		unsigned int tempHB, tempLB, temp;
+		unsigned char tempDigital,tempDecimal, minus = 0;
+		char Sbuf[4];
+		Clear_LCD(); // очищення екрану LCD
+ 6e0:	0e 94 e4 00 	call	0x1c8	; 0x1c8 <Clear_LCD>
+		if(OneWireReset(OW1)) // Ініціалізація 1-wire шини
+ 6e4:	20 91 71 00 	lds	r18, 0x0071
+ 6e8:	30 91 72 00 	lds	r19, 0x0072
+ 6ec:	40 91 73 00 	lds	r20, 0x0073
+ 6f0:	50 91 74 00 	lds	r21, 0x0074
+ 6f4:	60 91 75 00 	lds	r22, 0x0075
+ 6f8:	70 91 76 00 	lds	r23, 0x0076
+ 6fc:	80 91 77 00 	lds	r24, 0x0077
+ 700:	0e 94 68 01 	call	0x2d0	; 0x2d0 <OneWireReset>
+ 704:	88 23       	and	r24, r24
+ 706:	09 f4       	brne	.+2      	; 0x70a <__vector_10+0x74>
+ 708:	8f c0       	rjmp	.+286    	; 0x828 <__vector_10+0x192>
+		{
+			OneWireWriteByte(OW1, SKIP_ROM); // Команда ROM для звертання до давача
+ 70a:	20 91 71 00 	lds	r18, 0x0071
+ 70e:	30 91 72 00 	lds	r19, 0x0072
+ 712:	40 91 73 00 	lds	r20, 0x0073
+ 716:	50 91 74 00 	lds	r21, 0x0074
+ 71a:	60 91 75 00 	lds	r22, 0x0075
+ 71e:	70 91 76 00 	lds	r23, 0x0076
+ 722:	80 91 77 00 	lds	r24, 0x0077
+ 726:	0c ec       	ldi	r16, 0xCC	; 204
+ 728:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+			OneWireWriteByte(OW1, READ_SCRATCHPAD); // Функціональна команда на зчитування
+ 72c:	20 91 71 00 	lds	r18, 0x0071
+ 730:	30 91 72 00 	lds	r19, 0x0072
+ 734:	40 91 73 00 	lds	r20, 0x0073
+ 738:	50 91 74 00 	lds	r21, 0x0074
+ 73c:	60 91 75 00 	lds	r22, 0x0075
+ 740:	70 91 76 00 	lds	r23, 0x0076
+ 744:	80 91 77 00 	lds	r24, 0x0077
+ 748:	0e eb       	ldi	r16, 0xBE	; 190
+ 74a:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+			tempLB = (unsigned int)OneWireReadByte(OW1); // Зчитування двох байтів з температурою
+ 74e:	20 91 71 00 	lds	r18, 0x0071
+ 752:	30 91 72 00 	lds	r19, 0x0072
+ 756:	40 91 73 00 	lds	r20, 0x0073
+ 75a:	50 91 74 00 	lds	r21, 0x0074
+ 75e:	60 91 75 00 	lds	r22, 0x0075
+ 762:	70 91 76 00 	lds	r23, 0x0076
+ 766:	80 91 77 00 	lds	r24, 0x0077
+ 76a:	0e 94 5e 02 	call	0x4bc	; 0x4bc <OneWireReadByte>
+ 76e:	08 2f       	mov	r16, r24
+			tempHB = (unsigned int)OneWireReadByte(OW1);
+ 770:	20 91 71 00 	lds	r18, 0x0071
+ 774:	30 91 72 00 	lds	r19, 0x0072
+ 778:	40 91 73 00 	lds	r20, 0x0073
+ 77c:	50 91 74 00 	lds	r21, 0x0074
+ 780:	60 91 75 00 	lds	r22, 0x0075
+ 784:	70 91 76 00 	lds	r23, 0x0076
+ 788:	80 91 77 00 	lds	r24, 0x0077
+ 78c:	0e 94 5e 02 	call	0x4bc	; 0x4bc <OneWireReadByte>
+			Boof[0]=(unsigned char) tempLB; // Запамятовування двох байтів з температурою
+ 790:	00 93 86 00 	sts	0x0086, r16
+			Boof[1]=(unsigned char) tempHB;
+ 794:	80 93 87 00 	sts	0x0087, r24
+			temp = (tempLB)|(tempHB<<8); // Формування стічки зі значенням температури
+ 798:	38 2f       	mov	r19, r24
+ 79a:	20 e0       	ldi	r18, 0x00	; 0
+		Clear_LCD(); // очищення екрану LCD
+		if(OneWireReset(OW1)) // Ініціалізація 1-wire шини
+		{
+			OneWireWriteByte(OW1, SKIP_ROM); // Команда ROM для звертання до давача
+			OneWireWriteByte(OW1, READ_SCRATCHPAD); // Функціональна команда на зчитування
+			tempLB = (unsigned int)OneWireReadByte(OW1); // Зчитування двох байтів з температурою
+ 79c:	10 e0       	ldi	r17, 0x00	; 0
+			tempHB = (unsigned int)OneWireReadByte(OW1);
+			Boof[0]=(unsigned char) tempLB; // Запамятовування двох байтів з температурою
+			Boof[1]=(unsigned char) tempHB;
+			temp = (tempLB)|(tempHB<<8); // Формування стічки зі значенням температури
+ 79e:	02 2b       	or	r16, r18
+ 7a0:	13 2b       	or	r17, r19
+			if(temp&0x8000) 
+ 7a2:	17 ff       	sbrs	r17, 7
+ 7a4:	05 c0       	rjmp	.+10     	; 0x7b0 <__vector_10+0x11a>
+			{
+				temp = ~temp + 1;
+ 7a6:	10 95       	com	r17
+ 7a8:	01 95       	neg	r16
+ 7aa:	1f 4f       	sbci	r17, 0xFF	; 255
+				minus = 1;
+ 7ac:	91 e0       	ldi	r25, 0x01	; 1
+ 7ae:	01 c0       	rjmp	.+2      	; 0x7b2 <__vector_10+0x11c>
+	timer++;
+	if (timer==40)
+	{
+		timer=0;
+		unsigned int tempHB, tempLB, temp;
+		unsigned char tempDigital,tempDecimal, minus = 0;
+ 7b0:	90 e0       	ldi	r25, 0x00	; 0
+			if(temp&0x8000) 
+			{
+				temp = ~temp + 1;
+				minus = 1;
+			}
+			GotoXY(0, 0);
+ 7b2:	80 e0       	ldi	r24, 0x00	; 0
+ 7b4:	60 e0       	ldi	r22, 0x00	; 0
+ 7b6:	9d 83       	std	Y+5, r25	; 0x05
+ 7b8:	0e 94 98 00 	call	0x130	; 0x130 <GotoXY>
+			if(minus)	Set_Char('-');
+ 7bc:	9d 81       	ldd	r25, Y+5	; 0x05
+ 7be:	99 23       	and	r25, r25
+ 7c0:	11 f0       	breq	.+4      	; 0x7c6 <__vector_10+0x130>
+ 7c2:	8d e2       	ldi	r24, 0x2D	; 45
+ 7c4:	01 c0       	rjmp	.+2      	; 0x7c8 <__vector_10+0x132>
+			else		Set_Char('+');
+ 7c6:	8b e2       	ldi	r24, 0x2B	; 43
+ 7c8:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+			tempDigital = temp >> 4;
+			tempDecimal = temp & 0xF;
+ 7cc:	80 2f       	mov	r24, r16
+ 7ce:	8f 70       	andi	r24, 0x0F	; 15
+			tempDecimal = (tempDecimal<<1) + (tempDecimal<<3); // Множимо на 10
+ 7d0:	98 2f       	mov	r25, r24
+ 7d2:	99 0f       	add	r25, r25
+ 7d4:	f8 2e       	mov	r15, r24
+ 7d6:	ff 0c       	add	r15, r15
+ 7d8:	ff 0c       	add	r15, r15
+ 7da:	ff 0c       	add	r15, r15
+ 7dc:	f9 0e       	add	r15, r25
+				minus = 1;
+			}
+			GotoXY(0, 0);
+			if(minus)	Set_Char('-');
+			else		Set_Char('+');
+			tempDigital = temp >> 4;
+ 7de:	94 e0       	ldi	r25, 0x04	; 4
+ 7e0:	16 95       	lsr	r17
+ 7e2:	07 95       	ror	r16
+ 7e4:	9a 95       	dec	r25
+ 7e6:	e1 f7       	brne	.-8      	; 0x7e0 <__vector_10+0x14a>
+			tempDecimal = temp & 0xF;
+			tempDecimal = (tempDecimal<<1) + (tempDecimal<<3); // Множимо на 10
+			tempDecimal = (tempDecimal>>4);	// Ділимо на 16 
+			Set_String( utoa(tempDigital,Sbuf,10) );
+ 7e8:	80 2f       	mov	r24, r16
+ 7ea:	90 e0       	ldi	r25, 0x00	; 0
+ 7ec:	8e 01       	movw	r16, r28
+ 7ee:	0f 5f       	subi	r16, 0xFF	; 255
+ 7f0:	1f 4f       	sbci	r17, 0xFF	; 255
+ 7f2:	b8 01       	movw	r22, r16
+ 7f4:	4a e0       	ldi	r20, 0x0A	; 10
+ 7f6:	50 e0       	ldi	r21, 0x00	; 0
+ 7f8:	0e 94 ba 05 	call	0xb74	; 0xb74 <utoa>
+ 7fc:	0e 94 74 00 	call	0xe8	; 0xe8 <Set_String>
+			Set_Char('.');
+ 800:	8e e2       	ldi	r24, 0x2E	; 46
+ 802:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+			Set_String( utoa(tempDecimal,Sbuf,10) );
+ 806:	8f 2d       	mov	r24, r15
+ 808:	82 95       	swap	r24
+ 80a:	8f 70       	andi	r24, 0x0F	; 15
+ 80c:	90 e0       	ldi	r25, 0x00	; 0
+ 80e:	b8 01       	movw	r22, r16
+ 810:	4a e0       	ldi	r20, 0x0A	; 10
+ 812:	50 e0       	ldi	r21, 0x00	; 0
+ 814:	0e 94 ba 05 	call	0xb74	; 0xb74 <utoa>
+ 818:	0e 94 74 00 	call	0xe8	; 0xe8 <Set_String>
+			Set_Char('*');
+ 81c:	8a e2       	ldi	r24, 0x2A	; 42
+ 81e:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+			Set_Char('C');
+ 822:	83 e4       	ldi	r24, 0x43	; 67
+ 824:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+		}
+		if(OneWireReset(OW1)) // Ініціалізація 1-wire шини
+ 828:	20 91 71 00 	lds	r18, 0x0071
+ 82c:	30 91 72 00 	lds	r19, 0x0072
+ 830:	40 91 73 00 	lds	r20, 0x0073
+ 834:	50 91 74 00 	lds	r21, 0x0074
+ 838:	60 91 75 00 	lds	r22, 0x0075
+ 83c:	70 91 76 00 	lds	r23, 0x0076
+ 840:	80 91 77 00 	lds	r24, 0x0077
+ 844:	0e 94 68 01 	call	0x2d0	; 0x2d0 <OneWireReset>
+ 848:	88 23       	and	r24, r24
+ 84a:	11 f1       	breq	.+68     	; 0x890 <__stack+0x31>
+		{
+			OneWireWriteByte(OW1, SKIP_ROM); // Команда ROM для звертання до давача
+ 84c:	20 91 71 00 	lds	r18, 0x0071
+ 850:	30 91 72 00 	lds	r19, 0x0072
+ 854:	40 91 73 00 	lds	r20, 0x0073
+ 858:	50 91 74 00 	lds	r21, 0x0074
+ 85c:	60 91 75 00 	lds	r22, 0x0075
+ 860:	70 91 76 00 	lds	r23, 0x0076
+ 864:	80 91 77 00 	lds	r24, 0x0077
+ 868:	0c ec       	ldi	r16, 0xCC	; 204
+ 86a:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+			OneWireWriteByte(OW1, CONVERT_TEMP); // Функціональна команда запуску конвертації темпери
+ 86e:	20 91 71 00 	lds	r18, 0x0071
+ 872:	30 91 72 00 	lds	r19, 0x0072
+ 876:	40 91 73 00 	lds	r20, 0x0073
+ 87a:	50 91 74 00 	lds	r21, 0x0074
+ 87e:	60 91 75 00 	lds	r22, 0x0075
+ 882:	70 91 76 00 	lds	r23, 0x0076
+ 886:	80 91 77 00 	lds	r24, 0x0077
+ 88a:	04 e4       	ldi	r16, 0x44	; 68
+ 88c:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+		}
+		
+		minus = 0;
+		if(OneWireReset(OW2)) // Ініціалізація 1-wire шини 
+ 890:	20 91 78 00 	lds	r18, 0x0078
+ 894:	30 91 79 00 	lds	r19, 0x0079
+ 898:	40 91 7a 00 	lds	r20, 0x007A
+ 89c:	50 91 7b 00 	lds	r21, 0x007B
+ 8a0:	60 91 7c 00 	lds	r22, 0x007C
+ 8a4:	70 91 7d 00 	lds	r23, 0x007D
+ 8a8:	80 91 7e 00 	lds	r24, 0x007E
+ 8ac:	0e 94 68 01 	call	0x2d0	; 0x2d0 <OneWireReset>
+ 8b0:	88 23       	and	r24, r24
+ 8b2:	09 f4       	brne	.+2      	; 0x8b6 <__stack+0x57>
+ 8b4:	8f c0       	rjmp	.+286    	; 0x9d4 <__stack+0x175>
+		{
+			OneWireWriteByte(OW2, SKIP_ROM); // Команда ROM для звертання до давача
+ 8b6:	20 91 78 00 	lds	r18, 0x0078
+ 8ba:	30 91 79 00 	lds	r19, 0x0079
+ 8be:	40 91 7a 00 	lds	r20, 0x007A
+ 8c2:	50 91 7b 00 	lds	r21, 0x007B
+ 8c6:	60 91 7c 00 	lds	r22, 0x007C
+ 8ca:	70 91 7d 00 	lds	r23, 0x007D
+ 8ce:	80 91 7e 00 	lds	r24, 0x007E
+ 8d2:	0c ec       	ldi	r16, 0xCC	; 204
+ 8d4:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+			OneWireWriteByte(OW2, READ_SCRATCHPAD); // Функціональна команда на зчитування
+ 8d8:	20 91 78 00 	lds	r18, 0x0078
+ 8dc:	30 91 79 00 	lds	r19, 0x0079
+ 8e0:	40 91 7a 00 	lds	r20, 0x007A
+ 8e4:	50 91 7b 00 	lds	r21, 0x007B
+ 8e8:	60 91 7c 00 	lds	r22, 0x007C
+ 8ec:	70 91 7d 00 	lds	r23, 0x007D
+ 8f0:	80 91 7e 00 	lds	r24, 0x007E
+ 8f4:	0e eb       	ldi	r16, 0xBE	; 190
+ 8f6:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+			tempLB = (unsigned int)OneWireReadByte(OW2); // Зчитування двох байтів з температурою
+ 8fa:	20 91 78 00 	lds	r18, 0x0078
+ 8fe:	30 91 79 00 	lds	r19, 0x0079
+ 902:	40 91 7a 00 	lds	r20, 0x007A
+ 906:	50 91 7b 00 	lds	r21, 0x007B
+ 90a:	60 91 7c 00 	lds	r22, 0x007C
+ 90e:	70 91 7d 00 	lds	r23, 0x007D
+ 912:	80 91 7e 00 	lds	r24, 0x007E
+ 916:	0e 94 5e 02 	call	0x4bc	; 0x4bc <OneWireReadByte>
+ 91a:	08 2f       	mov	r16, r24
+			tempHB = (unsigned int)OneWireReadByte(OW2);
+ 91c:	20 91 78 00 	lds	r18, 0x0078
+ 920:	30 91 79 00 	lds	r19, 0x0079
+ 924:	40 91 7a 00 	lds	r20, 0x007A
+ 928:	50 91 7b 00 	lds	r21, 0x007B
+ 92c:	60 91 7c 00 	lds	r22, 0x007C
+ 930:	70 91 7d 00 	lds	r23, 0x007D
+ 934:	80 91 7e 00 	lds	r24, 0x007E
+ 938:	0e 94 5e 02 	call	0x4bc	; 0x4bc <OneWireReadByte>
+			Boof[2]=(unsigned char) tempLB; // Запамятовування двох байтів з температурою
+ 93c:	00 93 88 00 	sts	0x0088, r16
+			Boof[3]=(unsigned char) tempHB;
+ 940:	80 93 89 00 	sts	0x0089, r24
+			temp = (tempLB)|(tempHB<<8); // Формування стічки зі значенням температури
+ 944:	38 2f       	mov	r19, r24
+ 946:	20 e0       	ldi	r18, 0x00	; 0
+		minus = 0;
+		if(OneWireReset(OW2)) // Ініціалізація 1-wire шини 
+		{
+			OneWireWriteByte(OW2, SKIP_ROM); // Команда ROM для звертання до давача
+			OneWireWriteByte(OW2, READ_SCRATCHPAD); // Функціональна команда на зчитування
+			tempLB = (unsigned int)OneWireReadByte(OW2); // Зчитування двох байтів з температурою
+ 948:	10 e0       	ldi	r17, 0x00	; 0
+			tempHB = (unsigned int)OneWireReadByte(OW2);
+			Boof[2]=(unsigned char) tempLB; // Запамятовування двох байтів з температурою
+			Boof[3]=(unsigned char) tempHB;
+			temp = (tempLB)|(tempHB<<8); // Формування стічки зі значенням температури
+ 94a:	02 2b       	or	r16, r18
+ 94c:	13 2b       	or	r17, r19
+			if(temp&0x8000) 
+ 94e:	17 ff       	sbrs	r17, 7
+ 950:	05 c0       	rjmp	.+10     	; 0x95c <__stack+0xfd>
+			{
+				temp = ~temp + 1;
+ 952:	10 95       	com	r17
+ 954:	01 95       	neg	r16
+ 956:	1f 4f       	sbci	r17, 0xFF	; 255
+				minus = 1;
+ 958:	91 e0       	ldi	r25, 0x01	; 1
+ 95a:	01 c0       	rjmp	.+2      	; 0x95e <__stack+0xff>
+		{
+			OneWireWriteByte(OW1, SKIP_ROM); // Команда ROM для звертання до давача
+			OneWireWriteByte(OW1, CONVERT_TEMP); // Функціональна команда запуску конвертації темпери
+		}
+		
+		minus = 0;
+ 95c:	90 e0       	ldi	r25, 0x00	; 0
+			if(temp&0x8000) 
+			{
+				temp = ~temp + 1;
+				minus = 1;
+			}
+			GotoXY(0, 1);
+ 95e:	80 e0       	ldi	r24, 0x00	; 0
+ 960:	61 e0       	ldi	r22, 0x01	; 1
+ 962:	9d 83       	std	Y+5, r25	; 0x05
+ 964:	0e 94 98 00 	call	0x130	; 0x130 <GotoXY>
+			if(minus)	Set_Char('-');
+ 968:	9d 81       	ldd	r25, Y+5	; 0x05
+ 96a:	99 23       	and	r25, r25
+ 96c:	11 f0       	breq	.+4      	; 0x972 <__stack+0x113>
+ 96e:	8d e2       	ldi	r24, 0x2D	; 45
+ 970:	01 c0       	rjmp	.+2      	; 0x974 <__stack+0x115>
+			else		Set_Char('+');
+ 972:	8b e2       	ldi	r24, 0x2B	; 43
+ 974:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+			tempDigital = temp >> 4;
+			tempDecimal = temp & 0xF;
+ 978:	80 2f       	mov	r24, r16
+ 97a:	8f 70       	andi	r24, 0x0F	; 15
+			tempDecimal = (tempDecimal<<1) + (tempDecimal<<3); // Множимо на 10
+ 97c:	98 2f       	mov	r25, r24
+ 97e:	99 0f       	add	r25, r25
+ 980:	f8 2e       	mov	r15, r24
+ 982:	ff 0c       	add	r15, r15
+ 984:	ff 0c       	add	r15, r15
+ 986:	ff 0c       	add	r15, r15
+ 988:	f9 0e       	add	r15, r25
+				minus = 1;
+			}
+			GotoXY(0, 1);
+			if(minus)	Set_Char('-');
+			else		Set_Char('+');
+			tempDigital = temp >> 4;
+ 98a:	84 e0       	ldi	r24, 0x04	; 4
+ 98c:	16 95       	lsr	r17
+ 98e:	07 95       	ror	r16
+ 990:	8a 95       	dec	r24
+ 992:	e1 f7       	brne	.-8      	; 0x98c <__stack+0x12d>
+			tempDecimal = temp & 0xF;
+			tempDecimal = (tempDecimal<<1) + (tempDecimal<<3); // Множимо на 10
+			tempDecimal = (tempDecimal>>4);	// Ділимо на 16
+			Set_String( utoa(tempDigital,Sbuf,10) );
+ 994:	80 2f       	mov	r24, r16
+ 996:	90 e0       	ldi	r25, 0x00	; 0
+ 998:	8e 01       	movw	r16, r28
+ 99a:	0f 5f       	subi	r16, 0xFF	; 255
+ 99c:	1f 4f       	sbci	r17, 0xFF	; 255
+ 99e:	b8 01       	movw	r22, r16
+ 9a0:	4a e0       	ldi	r20, 0x0A	; 10
+ 9a2:	50 e0       	ldi	r21, 0x00	; 0
+ 9a4:	0e 94 ba 05 	call	0xb74	; 0xb74 <utoa>
+ 9a8:	0e 94 74 00 	call	0xe8	; 0xe8 <Set_String>
+			Set_Char('.');
+ 9ac:	8e e2       	ldi	r24, 0x2E	; 46
+ 9ae:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+			Set_String( utoa(tempDecimal,Sbuf,10) );
+ 9b2:	8f 2d       	mov	r24, r15
+ 9b4:	82 95       	swap	r24
+ 9b6:	8f 70       	andi	r24, 0x0F	; 15
+ 9b8:	90 e0       	ldi	r25, 0x00	; 0
+ 9ba:	b8 01       	movw	r22, r16
+ 9bc:	4a e0       	ldi	r20, 0x0A	; 10
+ 9be:	50 e0       	ldi	r21, 0x00	; 0
+ 9c0:	0e 94 ba 05 	call	0xb74	; 0xb74 <utoa>
+ 9c4:	0e 94 74 00 	call	0xe8	; 0xe8 <Set_String>
+			Set_Char('*');
+ 9c8:	8a e2       	ldi	r24, 0x2A	; 42
+ 9ca:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+			Set_Char('C');
+ 9ce:	83 e4       	ldi	r24, 0x43	; 67
+ 9d0:	0e 94 70 00 	call	0xe0	; 0xe0 <Set_Char>
+		}
+		if(OneWireReset(OW2)) // Ініціалізація 1-wire шини
+ 9d4:	20 91 78 00 	lds	r18, 0x0078
+ 9d8:	30 91 79 00 	lds	r19, 0x0079
+ 9dc:	40 91 7a 00 	lds	r20, 0x007A
+ 9e0:	50 91 7b 00 	lds	r21, 0x007B
+ 9e4:	60 91 7c 00 	lds	r22, 0x007C
+ 9e8:	70 91 7d 00 	lds	r23, 0x007D
+ 9ec:	80 91 7e 00 	lds	r24, 0x007E
+ 9f0:	0e 94 68 01 	call	0x2d0	; 0x2d0 <OneWireReset>
+ 9f4:	88 23       	and	r24, r24
+ 9f6:	11 f1       	breq	.+68     	; 0xa3c <__stack+0x1dd>
+		{
+			OneWireWriteByte(OW2, SKIP_ROM); // Команда ROM для звертання до давача
+ 9f8:	20 91 78 00 	lds	r18, 0x0078
+ 9fc:	30 91 79 00 	lds	r19, 0x0079
+ a00:	40 91 7a 00 	lds	r20, 0x007A
+ a04:	50 91 7b 00 	lds	r21, 0x007B
+ a08:	60 91 7c 00 	lds	r22, 0x007C
+ a0c:	70 91 7d 00 	lds	r23, 0x007D
+ a10:	80 91 7e 00 	lds	r24, 0x007E
+ a14:	0c ec       	ldi	r16, 0xCC	; 204
+ a16:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+			OneWireWriteByte(OW2, CONVERT_TEMP); // Функціональна команда запуску конвертації темпери
+ a1a:	20 91 78 00 	lds	r18, 0x0078
+ a1e:	30 91 79 00 	lds	r19, 0x0079
+ a22:	40 91 7a 00 	lds	r20, 0x007A
+ a26:	50 91 7b 00 	lds	r21, 0x007B
+ a2a:	60 91 7c 00 	lds	r22, 0x007C
+ a2e:	70 91 7d 00 	lds	r23, 0x007D
+ a32:	80 91 7e 00 	lds	r24, 0x007E
+ a36:	04 e4       	ldi	r16, 0x44	; 68
+ a38:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+		}
+	}
+}
+ a3c:	25 96       	adiw	r28, 0x05	; 5
+ a3e:	de bf       	out	0x3e, r29	; 62
+ a40:	cd bf       	out	0x3d, r28	; 61
+ a42:	cf 91       	pop	r28
+ a44:	df 91       	pop	r29
+ a46:	ff 91       	pop	r31
+ a48:	ef 91       	pop	r30
+ a4a:	bf 91       	pop	r27
+ a4c:	af 91       	pop	r26
+ a4e:	9f 91       	pop	r25
+ a50:	8f 91       	pop	r24
+ a52:	7f 91       	pop	r23
+ a54:	6f 91       	pop	r22
+ a56:	5f 91       	pop	r21
+ a58:	4f 91       	pop	r20
+ a5a:	3f 91       	pop	r19
+ a5c:	2f 91       	pop	r18
+ a5e:	1f 91       	pop	r17
+ a60:	0f 91       	pop	r16
+ a62:	ff 90       	pop	r15
+ a64:	0f 90       	pop	r0
+ a66:	0f be       	out	0x3f, r0	; 63
+ a68:	0f 90       	pop	r0
+ a6a:	1f 90       	pop	r1
+ a6c:	18 95       	reti
+
+00000a6e <main>:
+       	EndBufOUT &= BUF_MASK;
+	}
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+int main()
+{
+ a6e:	0f 93       	push	r16
+	Initial(); // Ініціалізація заліза
+ a70:	0e 94 2c 01 	call	0x258	; 0x258 <Initial>
+	address = ~PINC;
+ a74:	83 b3       	in	r24, 0x13	; 19
+ a76:	80 95       	com	r24
+ a78:	80 93 85 00 	sts	0x0085, r24
+	if(OneWireReset(OW1) ) // Перша конвертація температури
+ a7c:	20 91 71 00 	lds	r18, 0x0071
+ a80:	30 91 72 00 	lds	r19, 0x0072
+ a84:	40 91 73 00 	lds	r20, 0x0073
+ a88:	50 91 74 00 	lds	r21, 0x0074
+ a8c:	60 91 75 00 	lds	r22, 0x0075
+ a90:	70 91 76 00 	lds	r23, 0x0076
+ a94:	80 91 77 00 	lds	r24, 0x0077
+ a98:	0e 94 68 01 	call	0x2d0	; 0x2d0 <OneWireReset>
+ a9c:	88 23       	and	r24, r24
+ a9e:	11 f1       	breq	.+68     	; 0xae4 <main+0x76>
+	{
+		OneWireWriteByte(OW1, SKIP_ROM); // Команда ROM для звертання до давача
+ aa0:	20 91 71 00 	lds	r18, 0x0071
+ aa4:	30 91 72 00 	lds	r19, 0x0072
+ aa8:	40 91 73 00 	lds	r20, 0x0073
+ aac:	50 91 74 00 	lds	r21, 0x0074
+ ab0:	60 91 75 00 	lds	r22, 0x0075
+ ab4:	70 91 76 00 	lds	r23, 0x0076
+ ab8:	80 91 77 00 	lds	r24, 0x0077
+ abc:	0c ec       	ldi	r16, 0xCC	; 204
+ abe:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+		OneWireWriteByte(OW1, CONVERT_TEMP); // Функціональна команда запуску конвертації темпери
+ ac2:	20 91 71 00 	lds	r18, 0x0071
+ ac6:	30 91 72 00 	lds	r19, 0x0072
+ aca:	40 91 73 00 	lds	r20, 0x0073
+ ace:	50 91 74 00 	lds	r21, 0x0074
+ ad2:	60 91 75 00 	lds	r22, 0x0075
+ ad6:	70 91 76 00 	lds	r23, 0x0076
+ ada:	80 91 77 00 	lds	r24, 0x0077
+ ade:	04 e4       	ldi	r16, 0x44	; 68
+ ae0:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ ae4:	8f ef       	ldi	r24, 0xFF	; 255
+ ae6:	9f e1       	ldi	r25, 0x1F	; 31
+ ae8:	ac e1       	ldi	r26, 0x1C	; 28
+ aea:	81 50       	subi	r24, 0x01	; 1
+ aec:	90 40       	sbci	r25, 0x00	; 0
+ aee:	a0 40       	sbci	r26, 0x00	; 0
+ af0:	e1 f7       	brne	.-8      	; 0xaea <main+0x7c>
+ af2:	00 c0       	rjmp	.+0      	; 0xaf4 <main+0x86>
+ af4:	00 00       	nop
+	}
+	_delay_ms(1000);
+
+	if(OneWireReset(OW2) ) // Перша конвертація температури
+ af6:	20 91 78 00 	lds	r18, 0x0078
+ afa:	30 91 79 00 	lds	r19, 0x0079
+ afe:	40 91 7a 00 	lds	r20, 0x007A
+ b02:	50 91 7b 00 	lds	r21, 0x007B
+ b06:	60 91 7c 00 	lds	r22, 0x007C
+ b0a:	70 91 7d 00 	lds	r23, 0x007D
+ b0e:	80 91 7e 00 	lds	r24, 0x007E
+ b12:	0e 94 68 01 	call	0x2d0	; 0x2d0 <OneWireReset>
+ b16:	88 23       	and	r24, r24
+ b18:	11 f1       	breq	.+68     	; 0xb5e <main+0xf0>
+	{
+		OneWireWriteByte(OW2, SKIP_ROM); // Команда ROM для звертання до давача
+ b1a:	20 91 78 00 	lds	r18, 0x0078
+ b1e:	30 91 79 00 	lds	r19, 0x0079
+ b22:	40 91 7a 00 	lds	r20, 0x007A
+ b26:	50 91 7b 00 	lds	r21, 0x007B
+ b2a:	60 91 7c 00 	lds	r22, 0x007C
+ b2e:	70 91 7d 00 	lds	r23, 0x007D
+ b32:	80 91 7e 00 	lds	r24, 0x007E
+ b36:	0c ec       	ldi	r16, 0xCC	; 204
+ b38:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+		OneWireWriteByte(OW2, CONVERT_TEMP); // Функціональна команда запуску конвертації темпери
+ b3c:	20 91 78 00 	lds	r18, 0x0078
+ b40:	30 91 79 00 	lds	r19, 0x0079
+ b44:	40 91 7a 00 	lds	r20, 0x007A
+ b48:	50 91 7b 00 	lds	r21, 0x007B
+ b4c:	60 91 7c 00 	lds	r22, 0x007C
+ b50:	70 91 7d 00 	lds	r23, 0x007D
+ b54:	80 91 7e 00 	lds	r24, 0x007E
+ b58:	04 e4       	ldi	r16, 0x44	; 68
+ b5a:	0e 94 90 02 	call	0x520	; 0x520 <OneWireWriteByte>
+ b5e:	8f ef       	ldi	r24, 0xFF	; 255
+ b60:	9f e1       	ldi	r25, 0x1F	; 31
+ b62:	ac e1       	ldi	r26, 0x1C	; 28
+ b64:	81 50       	subi	r24, 0x01	; 1
+ b66:	90 40       	sbci	r25, 0x00	; 0
+ b68:	a0 40       	sbci	r26, 0x00	; 0
+ b6a:	e1 f7       	brne	.-8      	; 0xb64 <main+0xf6>
+ b6c:	00 c0       	rjmp	.+0      	; 0xb6e <main+0x100>
+ b6e:	00 00       	nop
+	}
+	_delay_ms(1000);
+
+	sei();
+ b70:	78 94       	sei
+ b72:	ff cf       	rjmp	.-2      	; 0xb72 <main+0x104>
+
+00000b74 <utoa>:
+ b74:	fb 01       	movw	r30, r22
+ b76:	9f 01       	movw	r18, r30
+ b78:	42 30       	cpi	r20, 0x02	; 2
+ b7a:	74 f0       	brlt	.+28     	; 0xb98 <utoa+0x24>
+ b7c:	45 32       	cpi	r20, 0x25	; 37
+ b7e:	64 f4       	brge	.+24     	; 0xb98 <utoa+0x24>
+ b80:	64 2f       	mov	r22, r20
+ b82:	77 27       	eor	r23, r23
+ b84:	0e 94 e0 05 	call	0xbc0	; 0xbc0 <__udivmodhi4>
+ b88:	80 5d       	subi	r24, 0xD0	; 208
+ b8a:	8a 33       	cpi	r24, 0x3A	; 58
+ b8c:	0c f0       	brlt	.+2      	; 0xb90 <utoa+0x1c>
+ b8e:	89 5d       	subi	r24, 0xD9	; 217
+ b90:	81 93       	st	Z+, r24
+ b92:	cb 01       	movw	r24, r22
+ b94:	00 97       	sbiw	r24, 0x00	; 0
+ b96:	a1 f7       	brne	.-24     	; 0xb80 <utoa+0xc>
+ b98:	10 82       	st	Z, r1
+ b9a:	c9 01       	movw	r24, r18
+ b9c:	0c 94 d0 05 	jmp	0xba0	; 0xba0 <strrev>
+
+00000ba0 <strrev>:
+ ba0:	dc 01       	movw	r26, r24
+ ba2:	fc 01       	movw	r30, r24
+ ba4:	67 2f       	mov	r22, r23
+ ba6:	71 91       	ld	r23, Z+
+ ba8:	77 23       	and	r23, r23
+ baa:	e1 f7       	brne	.-8      	; 0xba4 <strrev+0x4>
+ bac:	32 97       	sbiw	r30, 0x02	; 2
+ bae:	04 c0       	rjmp	.+8      	; 0xbb8 <strrev+0x18>
+ bb0:	7c 91       	ld	r23, X
+ bb2:	6d 93       	st	X+, r22
+ bb4:	70 83       	st	Z, r23
+ bb6:	62 91       	ld	r22, -Z
+ bb8:	ae 17       	cp	r26, r30
+ bba:	bf 07       	cpc	r27, r31
+ bbc:	c8 f3       	brcs	.-14     	; 0xbb0 <strrev+0x10>
+ bbe:	08 95       	ret
+
+00000bc0 <__udivmodhi4>:
+ bc0:	aa 1b       	sub	r26, r26
+ bc2:	bb 1b       	sub	r27, r27
+ bc4:	51 e1       	ldi	r21, 0x11	; 17
+ bc6:	07 c0       	rjmp	.+14     	; 0xbd6 <__udivmodhi4_ep>
+
+00000bc8 <__udivmodhi4_loop>:
+ bc8:	aa 1f       	adc	r26, r26
+ bca:	bb 1f       	adc	r27, r27
+ bcc:	a6 17       	cp	r26, r22
+ bce:	b7 07       	cpc	r27, r23
+ bd0:	10 f0       	brcs	.+4      	; 0xbd6 <__udivmodhi4_ep>
+ bd2:	a6 1b       	sub	r26, r22
+ bd4:	b7 0b       	sbc	r27, r23
+
+00000bd6 <__udivmodhi4_ep>:
+ bd6:	88 1f       	adc	r24, r24
+ bd8:	99 1f       	adc	r25, r25
+ bda:	5a 95       	dec	r21
+ bdc:	a9 f7       	brne	.-22     	; 0xbc8 <__udivmodhi4_loop>
+ bde:	80 95       	com	r24
+ be0:	90 95       	com	r25
+ be2:	bc 01       	movw	r22, r24
+ be4:	cd 01       	movw	r24, r26
+ be6:	08 95       	ret
+
+00000be8 <_exit>:
+ be8:	f8 94       	cli
+
+00000bea <__stop_program>:
+ bea:	ff cf       	rjmp	.-2      	; 0xbea <__stop_program>

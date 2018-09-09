@@ -1,0 +1,505 @@
+
+rozr_v19_master.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000324  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000027  00800100  00800100  00000398  2**0
+                  ALLOC
+  2 .stab         000006cc  00000000  00000000  00000398  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000097  00000000  00000000  00000a64  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000020  00000000  00000000  00000afb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_pubnames 00000120  00000000  00000000  00000b1b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000003d0  00000000  00000000  00000c3b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000001c5  00000000  00000000  0000100b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000003ca  00000000  00000000  000011d0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000b0  00000000  00000000  0000159c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000001d1  00000000  00000000  0000164c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000064  00000000  00000000  0000181d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_pubtypes 00000038  00000000  00000000  00001881  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__ctors_end>
+   4:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   8:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  10:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  14:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  18:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  1c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  20:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  24:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  28:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  2c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  30:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  34:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  38:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  3c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  40:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  44:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  48:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  4c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  50:	0c 94 a5 00 	jmp	0x14a	; 0x14a <__vector_20>
+  54:	0c 94 47 01 	jmp	0x28e	; 0x28e <__vector_21>
+  58:	0c 94 76 01 	jmp	0x2ec	; 0x2ec <__vector_22>
+  5c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  60:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  64:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  68:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  6c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  70:	0c 94 0a 01 	jmp	0x214	; 0x214 <__vector_28>
+  74:	0c 94 cc 00 	jmp	0x198	; 0x198 <__vector_29>
+  78:	0c 94 ff 00 	jmp	0x1fe	; 0x1fe <__vector_30>
+
+0000007c <__ctors_end>:
+  7c:	11 24       	eor	r1, r1
+  7e:	1f be       	out	0x3f, r1	; 63
+  80:	cf ef       	ldi	r28, 0xFF	; 255
+  82:	d4 e0       	ldi	r29, 0x04	; 4
+  84:	de bf       	out	0x3e, r29	; 62
+  86:	cd bf       	out	0x3d, r28	; 61
+
+00000088 <__do_clear_bss>:
+  88:	11 e0       	ldi	r17, 0x01	; 1
+  8a:	a0 e0       	ldi	r26, 0x00	; 0
+  8c:	b1 e0       	ldi	r27, 0x01	; 1
+  8e:	01 c0       	rjmp	.+2      	; 0x92 <.do_clear_bss_start>
+
+00000090 <.do_clear_bss_loop>:
+  90:	1d 92       	st	X+, r1
+
+00000092 <.do_clear_bss_start>:
+  92:	a7 32       	cpi	r26, 0x27	; 39
+  94:	b1 07       	cpc	r27, r17
+  96:	e1 f7       	brne	.-8      	; 0x90 <.do_clear_bss_loop>
+  98:	0e 94 82 01 	call	0x304	; 0x304 <main>
+  9c:	0c 94 90 01 	jmp	0x320	; 0x320 <_exit>
+
+000000a0 <__bad_interrupt>:
+  a0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a4 <WriteBufOut>:
+	WriteBufOut(Temporary); // записуємо значення адреси у буфер1
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void WriteBufOut(unsigned char value) // Запис у буфер1
+{
+	BufOut[EndBufOut++] = value;
+  a4:	90 91 01 01 	lds	r25, 0x0101
+  a8:	e9 2f       	mov	r30, r25
+  aa:	f0 e0       	ldi	r31, 0x00	; 0
+  ac:	e9 5f       	subi	r30, 0xF9	; 249
+  ae:	fe 4f       	sbci	r31, 0xFE	; 254
+  b0:	80 83       	st	Z, r24
+  b2:	9f 5f       	subi	r25, 0xFF	; 255
+    EndBufOut &= BUF_MASK;
+  b4:	9f 70       	andi	r25, 0x0F	; 15
+  b6:	90 93 01 01 	sts	0x0101, r25
+    cli();
+  ba:	f8 94       	cli
+    if(WaitRead == 0) UCSR1B |= 1<<UDRIE1; // Дозвіл на переривання при спорожненні UDR1
+  bc:	80 91 04 01 	lds	r24, 0x0104
+  c0:	88 23       	and	r24, r24
+  c2:	29 f4       	brne	.+10     	; 0xce <WriteBufOut+0x2a>
+  c4:	80 91 c9 00 	lds	r24, 0x00C9
+  c8:	80 62       	ori	r24, 0x20	; 32
+  ca:	80 93 c9 00 	sts	0x00C9, r24
+    sei();
+  ce:	78 94       	sei
+}
+  d0:	08 95       	ret
+
+000000d2 <WriteBuf1Out>:
+	}	
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void WriteBuf1Out(unsigned char value) // Запис у буфер2
+{
+	Buf1Out[EndBuf1Out++] = value;
+  d2:	90 91 03 01 	lds	r25, 0x0103
+  d6:	e9 2f       	mov	r30, r25
+  d8:	f0 e0       	ldi	r31, 0x00	; 0
+  da:	e9 5e       	subi	r30, 0xE9	; 233
+  dc:	fe 4f       	sbci	r31, 0xFE	; 254
+  de:	80 83       	st	Z, r24
+  e0:	9f 5f       	subi	r25, 0xFF	; 255
+    EndBuf1Out &= BUF1_MASK;
+  e2:	9f 70       	andi	r25, 0x0F	; 15
+  e4:	90 93 03 01 	sts	0x0103, r25
+    cli();
+  e8:	f8 94       	cli
+    if(WaitWrite == 0) UCSR0B |= 1<<UDRIE0; // Дозвіл на переривання при спорожненні UDR0
+  ea:	80 91 05 01 	lds	r24, 0x0105
+  ee:	88 23       	and	r24, r24
+  f0:	29 f4       	brne	.+10     	; 0xfc <WriteBuf1Out+0x2a>
+  f2:	80 91 c1 00 	lds	r24, 0x00C1
+  f6:	80 62       	ori	r24, 0x20	; 32
+  f8:	80 93 c1 00 	sts	0x00C1, r24
+    sei();
+  fc:	78 94       	sei
+}
+  fe:	08 95       	ret
+
+00000100 <Init>:
+	{	}
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+void Init()      
+{
+	DDRA  = 0xFF; // Ініціалізація портів
+ 100:	8f ef       	ldi	r24, 0xFF	; 255
+ 102:	81 b9       	out	0x01, r24	; 1
+	PORTA = 0x00;
+ 104:	12 b8       	out	0x02, r1	; 2
+	DDRB  = 0xFF;
+ 106:	84 b9       	out	0x04, r24	; 4
+	PORTB = 0x00;
+ 108:	15 b8       	out	0x05, r1	; 5
+	DDRC  = 0xFF;
+ 10a:	87 b9       	out	0x07, r24	; 7
+	PORTC = 0x00;
+ 10c:	18 b8       	out	0x08, r1	; 8
+    DDRD=0b11111010; 
+ 10e:	8a ef       	ldi	r24, 0xFA	; 250
+ 110:	8a b9       	out	0x0a, r24	; 10
+	PORTD=0b00000101;
+ 112:	85 e0       	ldi	r24, 0x05	; 5
+ 114:	8b b9       	out	0x0b, r24	; 11
+    UBRR1L = (unsigned char)(UBRRcalc); // Ініціалізація USART1
+ 116:	8b e3       	ldi	r24, 0x3B	; 59
+ 118:	80 93 cc 00 	sts	0x00CC, r24
+    UBRR1H = (unsigned char)(UBRRcalc>>8); // Швидкість передачі
+ 11c:	10 92 cd 00 	sts	0x00CD, r1
+    UCSR1A = 0; // Обнулення UCSR1A
+ 120:	10 92 c8 00 	sts	0x00C8, r1
+    UCSR1C = (1<<UCSZ11) | (1<<UCSZ10) | (1<<USBS1); // Формат кадру 9n2 без перевірки парності
+ 124:	9e e0       	ldi	r25, 0x0E	; 14
+ 126:	90 93 ca 00 	sts	0x00CA, r25
+    UCSR1B = (1<<UCSZ12) | (1<<RXEN1) | (1<<TXEN1) | (1<<RXCIE1) | (1<<TXCIE1); // Дозвіл прийому-передачі+перерив.прийому,заверш.перед.+9n
+ 12a:	9c ed       	ldi	r25, 0xDC	; 220
+ 12c:	90 93 c9 00 	sts	0x00C9, r25
+	UBRR0L = (unsigned char)(UBRRcalc); // Ініціалізація USART0
+ 130:	80 93 c4 00 	sts	0x00C4, r24
+    UBRR0H = (unsigned char)(UBRRcalc>>8); // Швидкість передачі
+ 134:	10 92 c5 00 	sts	0x00C5, r1
+	UCSR0A=0; // Обнулення UCSR0A
+ 138:	10 92 c0 00 	sts	0x00C0, r1
+	UCSR0B=(1<<RXCIE0) | (1<<TXCIE0) | (1<<RXEN0) | (1<<TXEN0); // Дозвіл прийому-передачі+перерив.прийому,заверш.перед.
+ 13c:	88 ed       	ldi	r24, 0xD8	; 216
+ 13e:	80 93 c1 00 	sts	0x00C1, r24
+ 	UCSR0C=(1<<UCSZ01) | (1<<UCSZ00); // Формат кадру 8n1 без перевірки парності
+ 142:	86 e0       	ldi	r24, 0x06	; 6
+ 144:	80 93 c2 00 	sts	0x00C2, r24
+}
+ 148:	08 95       	ret
+
+0000014a <__vector_20>:
+unsigned char Buf1Out[BUF_SIZE], StartBuf1Out = 0, EndBuf1Out = 0; // Буфер2
+volatile unsigned char  WaitRead = 0, WaitWrite = 0; 
+unsigned char Number = 0;
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART0_RX_vect) // Переривання при прийнятому байті на USART0
+{ 
+ 14a:	1f 92       	push	r1
+ 14c:	0f 92       	push	r0
+ 14e:	0f b6       	in	r0, 0x3f	; 63
+ 150:	0f 92       	push	r0
+ 152:	11 24       	eor	r1, r1
+ 154:	2f 93       	push	r18
+ 156:	3f 93       	push	r19
+ 158:	4f 93       	push	r20
+ 15a:	5f 93       	push	r21
+ 15c:	6f 93       	push	r22
+ 15e:	7f 93       	push	r23
+ 160:	8f 93       	push	r24
+ 162:	9f 93       	push	r25
+ 164:	af 93       	push	r26
+ 166:	bf 93       	push	r27
+ 168:	ef 93       	push	r30
+ 16a:	ff 93       	push	r31
+	unsigned char Temporary=UDR0;
+ 16c:	80 91 c6 00 	lds	r24, 0x00C6
+	WriteBufOut(Temporary); // записуємо значення адреси у буфер1
+ 170:	90 e0       	ldi	r25, 0x00	; 0
+ 172:	0e 94 52 00 	call	0xa4	; 0xa4 <WriteBufOut>
+}
+ 176:	ff 91       	pop	r31
+ 178:	ef 91       	pop	r30
+ 17a:	bf 91       	pop	r27
+ 17c:	af 91       	pop	r26
+ 17e:	9f 91       	pop	r25
+ 180:	8f 91       	pop	r24
+ 182:	7f 91       	pop	r23
+ 184:	6f 91       	pop	r22
+ 186:	5f 91       	pop	r21
+ 188:	4f 91       	pop	r20
+ 18a:	3f 91       	pop	r19
+ 18c:	2f 91       	pop	r18
+ 18e:	0f 90       	pop	r0
+ 190:	0f be       	out	0x3f, r0	; 63
+ 192:	0f 90       	pop	r0
+ 194:	1f 90       	pop	r1
+ 196:	18 95       	reti
+
+00000198 <__vector_29>:
+    if(WaitRead == 0) UCSR1B |= 1<<UDRIE1; // Дозвіл на переривання при спорожненні UDR1
+    sei();
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART1_UDRE_vect) // Переривання при спорожненні UDR1
+{
+ 198:	1f 92       	push	r1
+ 19a:	0f 92       	push	r0
+ 19c:	0f b6       	in	r0, 0x3f	; 63
+ 19e:	0f 92       	push	r0
+ 1a0:	11 24       	eor	r1, r1
+ 1a2:	8f 93       	push	r24
+ 1a4:	9f 93       	push	r25
+ 1a6:	ef 93       	push	r30
+ 1a8:	ff 93       	push	r31
+	PORTD |= 1<<PD4; // Переходимо у режим передачі
+ 1aa:	5c 9a       	sbi	0x0b, 4	; 11
+    UCSR1B |= 1<<TXB81; // Переходимо у восьми бітний редим        
+ 1ac:	80 91 c9 00 	lds	r24, 0x00C9
+ 1b0:	81 60       	ori	r24, 0x01	; 1
+ 1b2:	80 93 c9 00 	sts	0x00C9, r24
+    asm("nop");
+ 1b6:	00 00       	nop
+    UDR1 = BufOut[StartBufOut++]; // Передаємо начення буфера у UDR1
+ 1b8:	80 91 00 01 	lds	r24, 0x0100
+ 1bc:	e8 2f       	mov	r30, r24
+ 1be:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c0:	e9 5f       	subi	r30, 0xF9	; 249
+ 1c2:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1c4:	90 81       	ld	r25, Z
+ 1c6:	90 93 ce 00 	sts	0x00CE, r25
+ 1ca:	8f 5f       	subi	r24, 0xFF	; 255
+    StartBufOut &= BUF_MASK;
+ 1cc:	8f 70       	andi	r24, 0x0F	; 15
+ 1ce:	80 93 00 01 	sts	0x0100, r24
+    if(StartBufOut == EndBufOut || WaitRead == 1) UCSR1B &= ~(1<<UDRIE1); // При спорожненні буферу1 забороняємо переривання при спорожненні UDR1
+ 1d2:	90 91 01 01 	lds	r25, 0x0101
+ 1d6:	89 17       	cp	r24, r25
+ 1d8:	21 f0       	breq	.+8      	; 0x1e2 <__vector_29+0x4a>
+ 1da:	80 91 04 01 	lds	r24, 0x0104
+ 1de:	81 30       	cpi	r24, 0x01	; 1
+ 1e0:	29 f4       	brne	.+10     	; 0x1ec <__vector_29+0x54>
+ 1e2:	80 91 c9 00 	lds	r24, 0x00C9
+ 1e6:	8f 7d       	andi	r24, 0xDF	; 223
+ 1e8:	80 93 c9 00 	sts	0x00C9, r24
+}
+ 1ec:	ff 91       	pop	r31
+ 1ee:	ef 91       	pop	r30
+ 1f0:	9f 91       	pop	r25
+ 1f2:	8f 91       	pop	r24
+ 1f4:	0f 90       	pop	r0
+ 1f6:	0f be       	out	0x3f, r0	; 63
+ 1f8:	0f 90       	pop	r0
+ 1fa:	1f 90       	pop	r1
+ 1fc:	18 95       	reti
+
+000001fe <__vector_30>:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART1_TX_vect) // Переривання при відправленому байті USART1
+{ PORTD &= ~(1<<PD4); } // Перехід у режим прийому
+ 1fe:	1f 92       	push	r1
+ 200:	0f 92       	push	r0
+ 202:	0f b6       	in	r0, 0x3f	; 63
+ 204:	0f 92       	push	r0
+ 206:	11 24       	eor	r1, r1
+ 208:	5c 98       	cbi	0x0b, 4	; 11
+ 20a:	0f 90       	pop	r0
+ 20c:	0f be       	out	0x3f, r0	; 63
+ 20e:	0f 90       	pop	r0
+ 210:	1f 90       	pop	r1
+ 212:	18 95       	reti
+
+00000214 <__vector_28>:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART1_RX_vect) // Переривання при прийнятому байті USART1               
+{ 
+ 214:	1f 92       	push	r1
+ 216:	0f 92       	push	r0
+ 218:	0f b6       	in	r0, 0x3f	; 63
+ 21a:	0f 92       	push	r0
+ 21c:	11 24       	eor	r1, r1
+ 21e:	2f 93       	push	r18
+ 220:	3f 93       	push	r19
+ 222:	4f 93       	push	r20
+ 224:	5f 93       	push	r21
+ 226:	6f 93       	push	r22
+ 228:	7f 93       	push	r23
+ 22a:	8f 93       	push	r24
+ 22c:	9f 93       	push	r25
+ 22e:	af 93       	push	r26
+ 230:	bf 93       	push	r27
+ 232:	ef 93       	push	r30
+ 234:	ff 93       	push	r31
+	unsigned char One;
+	One = UDR1;
+ 236:	80 91 ce 00 	lds	r24, 0x00CE
+	WriteBuf1Out(One); // Записуємо значення UDR1 в буфер2
+ 23a:	90 e0       	ldi	r25, 0x00	; 0
+ 23c:	0e 94 69 00 	call	0xd2	; 0xd2 <WriteBuf1Out>
+	Number++;
+ 240:	80 91 06 01 	lds	r24, 0x0106
+ 244:	8f 5f       	subi	r24, 0xFF	; 255
+ 246:	80 93 06 01 	sts	0x0106, r24
+	if (Number == 4) // якщо ми прийняли 4 байти
+ 24a:	84 30       	cpi	r24, 0x04	; 4
+ 24c:	79 f4       	brne	.+30     	; 0x26c <__vector_28+0x58>
+	{
+		Number = 0;
+ 24e:	10 92 06 01 	sts	0x0106, r1
+	    WaitRead = 0;
+ 252:	10 92 04 01 	sts	0x0104, r1
+	    if(StartBufOut != EndBufOut) UCSR1B |= 1<<UDRIE1; // Якщо буфер1 не порожній, то дозволити переривання при спорожненні UDR1
+ 256:	90 91 00 01 	lds	r25, 0x0100
+ 25a:	80 91 01 01 	lds	r24, 0x0101
+ 25e:	98 17       	cp	r25, r24
+ 260:	29 f0       	breq	.+10     	; 0x26c <__vector_28+0x58>
+ 262:	80 91 c9 00 	lds	r24, 0x00C9
+ 266:	80 62       	ori	r24, 0x20	; 32
+ 268:	80 93 c9 00 	sts	0x00C9, r24
+	}	
+}
+ 26c:	ff 91       	pop	r31
+ 26e:	ef 91       	pop	r30
+ 270:	bf 91       	pop	r27
+ 272:	af 91       	pop	r26
+ 274:	9f 91       	pop	r25
+ 276:	8f 91       	pop	r24
+ 278:	7f 91       	pop	r23
+ 27a:	6f 91       	pop	r22
+ 27c:	5f 91       	pop	r21
+ 27e:	4f 91       	pop	r20
+ 280:	3f 91       	pop	r19
+ 282:	2f 91       	pop	r18
+ 284:	0f 90       	pop	r0
+ 286:	0f be       	out	0x3f, r0	; 63
+ 288:	0f 90       	pop	r0
+ 28a:	1f 90       	pop	r1
+ 28c:	18 95       	reti
+
+0000028e <__vector_21>:
+    if(WaitWrite == 0) UCSR0B |= 1<<UDRIE0; // Дозвіл на переривання при спорожненні UDR0
+    sei();
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART0_UDRE_vect) // Переривання при спорожненні UDR0              
+{                                                          
+ 28e:	1f 92       	push	r1
+ 290:	0f 92       	push	r0
+ 292:	0f b6       	in	r0, 0x3f	; 63
+ 294:	0f 92       	push	r0
+ 296:	11 24       	eor	r1, r1
+ 298:	8f 93       	push	r24
+ 29a:	9f 93       	push	r25
+ 29c:	ef 93       	push	r30
+ 29e:	ff 93       	push	r31
+    UDR0 = Buf1Out[StartBuf1Out++]; // Передаємо значення з буферу2
+ 2a0:	80 91 02 01 	lds	r24, 0x0102
+ 2a4:	e8 2f       	mov	r30, r24
+ 2a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 2a8:	e9 5e       	subi	r30, 0xE9	; 233
+ 2aa:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2ac:	90 81       	ld	r25, Z
+ 2ae:	90 93 c6 00 	sts	0x00C6, r25
+	WaitWrite = 1;
+ 2b2:	91 e0       	ldi	r25, 0x01	; 1
+ 2b4:	90 93 05 01 	sts	0x0105, r25
+    sei();
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART0_UDRE_vect) // Переривання при спорожненні UDR0              
+{                                                          
+    UDR0 = Buf1Out[StartBuf1Out++]; // Передаємо значення з буферу2
+ 2b8:	8f 5f       	subi	r24, 0xFF	; 255
+	WaitWrite = 1;
+    StartBuf1Out &= BUF1_MASK;
+ 2ba:	8f 70       	andi	r24, 0x0F	; 15
+ 2bc:	80 93 02 01 	sts	0x0102, r24
+    if(StartBuf1Out == EndBuf1Out  ||  WaitWrite == 1) UCSR0B &= ~(1<<UDRIE0); // Якщо буфер2 порожній, то забороняємо переривання при спорожненні UDR0
+ 2c0:	90 91 03 01 	lds	r25, 0x0103
+ 2c4:	89 17       	cp	r24, r25
+ 2c6:	21 f0       	breq	.+8      	; 0x2d0 <__vector_21+0x42>
+ 2c8:	80 91 05 01 	lds	r24, 0x0105
+ 2cc:	81 30       	cpi	r24, 0x01	; 1
+ 2ce:	29 f4       	brne	.+10     	; 0x2da <__vector_21+0x4c>
+ 2d0:	80 91 c1 00 	lds	r24, 0x00C1
+ 2d4:	8f 7d       	andi	r24, 0xDF	; 223
+ 2d6:	80 93 c1 00 	sts	0x00C1, r24
+}
+ 2da:	ff 91       	pop	r31
+ 2dc:	ef 91       	pop	r30
+ 2de:	9f 91       	pop	r25
+ 2e0:	8f 91       	pop	r24
+ 2e2:	0f 90       	pop	r0
+ 2e4:	0f be       	out	0x3f, r0	; 63
+ 2e6:	0f 90       	pop	r0
+ 2e8:	1f 90       	pop	r1
+ 2ea:	18 95       	reti
+
+000002ec <__vector_22>:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ISR(USART0_TX_vect) // Переривання при відправленному байті USART0                  
+{ WaitWrite = 0; } 
+ 2ec:	1f 92       	push	r1
+ 2ee:	0f 92       	push	r0
+ 2f0:	0f b6       	in	r0, 0x3f	; 63
+ 2f2:	0f 92       	push	r0
+ 2f4:	11 24       	eor	r1, r1
+ 2f6:	10 92 05 01 	sts	0x0105, r1
+ 2fa:	0f 90       	pop	r0
+ 2fc:	0f be       	out	0x3f, r0	; 63
+ 2fe:	0f 90       	pop	r0
+ 300:	1f 90       	pop	r1
+ 302:	18 95       	reti
+
+00000304 <main>:
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+int main()
+{
+	cli();
+ 304:	f8 94       	cli
+	Init(); // Ініціалізація заліза
+ 306:	0e 94 80 00 	call	0x100	; 0x100 <Init>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 30a:	8f ef       	ldi	r24, 0xFF	; 255
+ 30c:	9f e5       	ldi	r25, 0x5F	; 95
+ 30e:	a4 e5       	ldi	r26, 0x54	; 84
+ 310:	81 50       	subi	r24, 0x01	; 1
+ 312:	90 40       	sbci	r25, 0x00	; 0
+ 314:	a0 40       	sbci	r26, 0x00	; 0
+ 316:	e1 f7       	brne	.-8      	; 0x310 <main+0xc>
+ 318:	00 c0       	rjmp	.+0      	; 0x31a <main+0x16>
+ 31a:	00 00       	nop
+	_delay_ms(3000);
+    sei();  
+ 31c:	78 94       	sei
+ 31e:	ff cf       	rjmp	.-2      	; 0x31e <main+0x1a>
+
+00000320 <_exit>:
+ 320:	f8 94       	cli
+
+00000322 <__stop_program>:
+ 322:	ff cf       	rjmp	.-2      	; 0x322 <__stop_program>
